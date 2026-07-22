@@ -1,0 +1,18 @@
+# BasicInteractionFlow
+
+main: kit: flow: BasicInteractionFlow:
+{
+  entity: "interaction",
+  kind: "basic",
+  name: "BasicInteractionFlow",
+  step: [
+    {
+      input: {
+        ref: "interaction_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicInteractionFlow"
+}

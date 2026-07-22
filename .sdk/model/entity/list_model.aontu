@@ -1,0 +1,10 @@
+# Entity: list_model
+
+main: kit: entity: list_model: {
+
+  alias: field: {}
+
+  name: "list_model"
+
+
+}

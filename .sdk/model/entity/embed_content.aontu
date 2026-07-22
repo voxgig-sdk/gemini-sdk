@@ -1,0 +1,88 @@
+# Entity: embed_content
+
+main: kit: entity: embed_content: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "content"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "embedding"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "task_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "embed_content"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "embedding-001"
+                kind: "param"
+                name: "model"
+                orig: "model"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "key"
+                orig: "key"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/models/{model}:embedContent"
+          parts: [
+            "models"
+            "{model}:embedContent"
+          ]
+          select: {
+            exist: [
+              "key"
+              "model"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "model"
+      ]
+    ]
+  }
+
+
+
+}

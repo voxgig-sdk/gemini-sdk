@@ -1,0 +1,33 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Google AI for Developers"
+        url: "https://ai.google.dev/docs"
+      }
+      description: "The Gemini API provides developers with tools to leverage advanced AI models for content generation, including text, images, audio, and more. It enables seamless integration for creating applications that utilize state-of-the-art multimodal capabilities."
+      security: {
+        in: "header"
+        name: "x-goog-api-key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          description: "Gemini API Production Server"
+          url: "https://generativelanguage.googleapis.com/v1beta"
+        }
+      ]
+      summary: "The Gemini API provides developers with tools to leverage advanced AI models for content generation, including text, images, audio, and more."
+      termsOfService: "https://developers.google.com/terms/site-policies"
+      title: "Gemini API"
+      version: "1.0.0"
+      website: "https://ai.google.dev/docs"
+    }
+  }
+}
+

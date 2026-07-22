@@ -1,0 +1,22 @@
+# BasicEmbedContentFlow
+
+main: kit: flow: BasicEmbedContentFlow:
+{
+  entity: "embed_content",
+  kind: "basic",
+  name: "BasicEmbedContentFlow",
+  step: [
+    {
+      input: {
+        ref: "embed_content_ref01"
+      }
+
+      match: {
+        model: "model01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicEmbedContentFlow"
+}

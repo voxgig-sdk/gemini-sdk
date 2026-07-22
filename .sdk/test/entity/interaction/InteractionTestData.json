@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "interaction": {
+      "INTERACTION00": {
+        "config": {},
+        "input": "s33",
+        "metadata": {},
+        "model": "s35",
+        "output_text": "s36",
+        "id": "INTERACTION00"
+      },
+      "INTERACTION01": {
+        "config": {},
+        "input": "s65",
+        "metadata": {},
+        "model": "s67",
+        "output_text": "s68",
+        "id": "INTERACTION01"
+      },
+      "INTERACTION02": {
+        "config": {},
+        "input": "s97",
+        "metadata": {},
+        "model": "s99",
+        "output_text": "s9a",
+        "id": "INTERACTION02"
+      }
+    }
+  },
+  "new": {
+    "interaction": {
+      "interaction_ref01": {
+        "config": {},
+        "input": "sc9",
+        "metadata": {},
+        "model": "scb",
+        "output_text": "scc"
+      }
+    }
+  }
+}

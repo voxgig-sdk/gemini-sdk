@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "list_model": {
+      "LIST_MODEL00": {},
+      "LIST_MODEL01": {},
+      "LIST_MODEL02": {}
+    }
+  },
+  "new": {
+    "list_model": {
+      "list_model_ref01": {}
+    }
+  }
+}

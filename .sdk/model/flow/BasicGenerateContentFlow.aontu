@@ -1,0 +1,22 @@
+# BasicGenerateContentFlow
+
+main: kit: flow: BasicGenerateContentFlow:
+{
+  entity: "generate_content",
+  kind: "basic",
+  name: "BasicGenerateContentFlow",
+  step: [
+    {
+      input: {
+        ref: "generate_content_ref01"
+      }
+
+      match: {
+        model: "model01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGenerateContentFlow"
+}

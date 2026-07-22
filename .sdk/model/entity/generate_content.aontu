@@ -1,0 +1,142 @@
+# Entity: generate_content
+
+main: kit: entity: generate_content: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "candidate"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "content"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "generation_config"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "prompt_feedback"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "safety_setting"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "tool"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "usage_metadata"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "generate_content"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "gemini-2.5-flash"
+                kind: "param"
+                name: "model"
+                orig: "model"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "key"
+                orig: "key"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/models/{model}:generateContent"
+          parts: [
+            "models"
+            "{model}:generateContent"
+          ]
+          select: {
+            exist: [
+              "key"
+              "model"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "gemini-3.6-flash"
+                kind: "param"
+                name: "model"
+                orig: "model"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "key"
+                orig: "key"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/models/{model}:streamGenerateContent"
+          parts: [
+            "models"
+            "{model}:streamGenerateContent"
+          ]
+          select: {
+            exist: [
+              "key"
+              "model"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "model"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,9 @@
+# BasicListModelFlow
+
+main: kit: flow: BasicListModelFlow:
+{
+  entity: "list_model",
+  kind: "basic",
+  name: "BasicListModelFlow",
+  "key$": "BasicListModelFlow"
+}

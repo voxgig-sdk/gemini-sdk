@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "embed_content": {
+      "EMBED_CONTENT00": {
+        "content": {},
+        "embedding": {},
+        "task_type": "s2a",
+        "title": "s2b",
+        "model": "MODEL01",
+        "id": "EMBED_CONTENT00"
+      },
+      "EMBED_CONTENT01": {
+        "content": {},
+        "embedding": {},
+        "task_type": "s52",
+        "title": "s53",
+        "model": "MODEL01",
+        "id": "EMBED_CONTENT01"
+      },
+      "EMBED_CONTENT02": {
+        "content": {},
+        "embedding": {},
+        "task_type": "s7a",
+        "title": "s7b",
+        "model": "MODEL01",
+        "id": "EMBED_CONTENT02"
+      }
+    }
+  },
+  "new": {
+    "embed_content": {
+      "embed_content_ref01": {
+        "content": {},
+        "embedding": {},
+        "task_type": "sa2",
+        "title": "sa3"
+      }
+    }
+  }
+}
