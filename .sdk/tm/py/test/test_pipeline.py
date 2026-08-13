@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import GeminiSDK
-from core.error import GeminiError
-from core.result import GeminiResult
-from core.response import GeminiResponse
-from core.spec import GeminiSpec
-from feature.base_feature import GeminiBaseFeature
+from projectname_sdk.core.error import GeminiError
+from projectname_sdk.core.result import GeminiResult
+from projectname_sdk.core.response import GeminiResponse
+from projectname_sdk.core.spec import GeminiSpec
+from projectname_sdk.feature.base_feature import GeminiBaseFeature
 
 
 def _client():

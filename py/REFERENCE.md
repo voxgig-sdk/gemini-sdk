@@ -105,9 +105,9 @@ embed_content = client.EmbedContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `dict` | Yes |  |
-| `embedding` | `dict` | No |  |
-| `task_type` | `str` | No |  |
+| `taskType` | `str` | No |  |
 | `title` | `str` | No |  |
+| `values` | `list` | No |  |
 
 ### Operations
 
@@ -118,6 +118,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.EmbedContent().create({
     "model": "example_model",  # str
+    "content": {},  # dict
 })
 ```
 
@@ -160,13 +161,13 @@ generate_content = client.GenerateContent()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `list` | No |  |
-| `content` | `list` | Yes |  |
-| `generation_config` | `dict` | No |  |
-| `prompt_feedback` | `dict` | No |  |
-| `safety_setting` | `list` | No |  |
-| `tool` | `list` | No |  |
-| `usage_metadata` | `dict` | No |  |
+| `candidates` | `list` | No |  |
+| `contents` | `list` | Yes |  |
+| `generationConfig` | `dict` | No |  |
+| `promptFeedback` | `dict` | No |  |
+| `safetySettings` | `list` | No |  |
+| `tools` | `list` | No |  |
+| `usageMetadata` | `dict` | No |  |
 
 ### Operations
 
@@ -177,6 +178,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.GenerateContent().create({
     "model": "example_model",  # str
+    "contents": [],  # list
 })
 ```
 
@@ -221,9 +223,7 @@ interaction = client.Interaction()
 | --- | --- | --- | --- |
 | `config` | `dict` | No |  |
 | `input` | `str` | Yes |  |
-| `metadata` | `dict` | No |  |
 | `model` | `str` | Yes |  |
-| `output_text` | `str` | No |  |
 
 ### Operations
 
@@ -313,11 +313,11 @@ model = client.Model()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `str` | No |  |
-| `display_name` | `str` | No |  |
-| `input_token_limit` | `int` | No |  |
+| `displayName` | `str` | No |  |
+| `inputTokenLimit` | `int` | No |  |
 | `name` | `str` | No |  |
-| `output_token_limit` | `int` | No |  |
-| `supported_generation_method` | `list` | No |  |
+| `outputTokenLimit` | `int` | No |  |
+| `supportedGenerationMethods` | `list` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations

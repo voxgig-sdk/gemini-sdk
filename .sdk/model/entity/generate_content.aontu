@@ -6,37 +6,37 @@ main: kit: entity: generate_content: {
 
   fields: [
     {
-      name: "candidate"
+      name: "candidates"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "content"
+      name: "contents"
       req: true
       type: "`$ARRAY`"
     }
     {
-      name: "generation_config"
+      name: "generationConfig"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "prompt_feedback"
+      name: "promptFeedback"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "safety_setting"
+      name: "safetySettings"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "tool"
+      name: "tools"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "usage_metadata"
+      name: "usageMetadata"
       req: false
       type: "`$OBJECT`"
     }

@@ -42,8 +42,8 @@ client = GeminiSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.EmbedContent().create({"model": "example_model"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.EmbedContent().create({"model": "example_model", "content": {}})
 
 ```
 
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GeminiSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 model = client.Model().list()
 # model contains the mock response record
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -248,9 +249,9 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `embedding` |  |
-| `task_type` |  |
+| `taskType` |  |
 | `title` |  |
+| `values` |  |
 
 Operations: Create.
 
@@ -260,13 +261,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `content` |  |
-| `generation_config` |  |
-| `prompt_feedback` |  |
-| `safety_setting` |  |
-| `tool` |  |
-| `usage_metadata` |  |
+| `candidates` |  |
+| `contents` |  |
+| `generationConfig` |  |
+| `promptFeedback` |  |
+| `safetySettings` |  |
+| `tools` |  |
+| `usageMetadata` |  |
 
 Operations: Create.
 
@@ -278,9 +279,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `config` |  |
 | `input` |  |
-| `metadata` |  |
 | `model` |  |
-| `output_text` |  |
 
 Operations: Create.
 
@@ -300,11 +299,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `display_name` |  |
-| `input_token_limit` |  |
+| `displayName` |  |
+| `inputTokenLimit` |  |
 | `name` |  |
-| `output_token_limit` |  |
-| `supported_generation_method` |  |
+| `outputTokenLimit` |  |
+| `supportedGenerationMethods` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -331,15 +330,16 @@ Create an instance: `embed_content = client.EmbedContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `dict` |  |
-| `embedding` | `dict` |  |
-| `task_type` | `str` |  |
+| `taskType` | `str` |  |
 | `title` | `str` |  |
+| `values` | `list` |  |
 
 #### Example: Create
 
 ```python
 embed_content = client.EmbedContent().create({
     "model": "example_model",  # str
+    "content": {},  # dict
 })
 ```
 
@@ -358,19 +358,20 @@ Create an instance: `generate_content = client.GenerateContent()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `list` |  |
-| `content` | `list` |  |
-| `generation_config` | `dict` |  |
-| `prompt_feedback` | `dict` |  |
-| `safety_setting` | `list` |  |
-| `tool` | `list` |  |
-| `usage_metadata` | `dict` |  |
+| `candidates` | `list` |  |
+| `contents` | `list` |  |
+| `generationConfig` | `dict` |  |
+| `promptFeedback` | `dict` |  |
+| `safetySettings` | `list` |  |
+| `tools` | `list` |  |
+| `usageMetadata` | `dict` |  |
 
 #### Example: Create
 
 ```python
 generate_content = client.GenerateContent().create({
     "model": "example_model",  # str
+    "contents": [],  # list
 })
 ```
 
@@ -391,9 +392,7 @@ Create an instance: `interaction = client.Interaction()`
 | --- | --- | --- |
 | `config` | `dict` |  |
 | `input` | `str` |  |
-| `metadata` | `dict` |  |
 | `model` | `str` |  |
-| `output_text` | `str` |  |
 
 #### Example: Create
 
@@ -426,11 +425,11 @@ Create an instance: `model = client.Model()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `display_name` | `str` |  |
-| `input_token_limit` | `int` |  |
+| `displayName` | `str` |  |
+| `inputTokenLimit` | `int` |  |
 | `name` | `str` |  |
-| `output_token_limit` | `int` |  |
-| `supported_generation_method` | `list` |  |
+| `outputTokenLimit` | `int` |  |
+| `supportedGenerationMethods` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load

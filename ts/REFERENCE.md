@@ -166,9 +166,9 @@ const embed_content = client.EmbedContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `Record<string, any>` | Yes |  |
-| `embedding` | `Record<string, any>` | No |  |
-| `task_type` | `string` | No |  |
+| `taskType` | `string` | No |  |
 | `title` | `string` | No |  |
+| `values` | `any[]` | No |  |
 
 ### Operations
 
@@ -179,6 +179,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.EmbedContent().create({
   model: 'example_model',
+  content: {},
 })
 ```
 
@@ -220,13 +221,13 @@ const generate_content = client.GenerateContent()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `any[]` | No |  |
-| `content` | `any[]` | Yes |  |
-| `generation_config` | `Record<string, any>` | No |  |
-| `prompt_feedback` | `Record<string, any>` | No |  |
-| `safety_setting` | `any[]` | No |  |
-| `tool` | `any[]` | No |  |
-| `usage_metadata` | `Record<string, any>` | No |  |
+| `candidates` | `any[]` | No |  |
+| `contents` | `any[]` | Yes |  |
+| `generationConfig` | `Record<string, any>` | No |  |
+| `promptFeedback` | `Record<string, any>` | No |  |
+| `safetySettings` | `any[]` | No |  |
+| `tools` | `any[]` | No |  |
+| `usageMetadata` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -237,6 +238,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.GenerateContent().create({
   model: 'example_model',
+  contents: [],
 })
 ```
 
@@ -280,9 +282,7 @@ const interaction = client.Interaction()
 | --- | --- | --- | --- |
 | `config` | `Record<string, any>` | No |  |
 | `input` | `string` | Yes |  |
-| `metadata` | `Record<string, any>` | No |  |
 | `model` | `string` | Yes |  |
-| `output_text` | `string` | No |  |
 
 ### Operations
 
@@ -370,11 +370,11 @@ const model = client.Model()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `input_token_limit` | `number` | No |  |
+| `displayName` | `string` | No |  |
+| `inputTokenLimit` | `number` | No |  |
 | `name` | `string` | No |  |
-| `output_token_limit` | `number` | No |  |
-| `supported_generation_method` | `any[]` | No |  |
+| `outputTokenLimit` | `number` | No |  |
+| `supportedGenerationMethods` | `any[]` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

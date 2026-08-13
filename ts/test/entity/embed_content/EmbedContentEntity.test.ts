@@ -63,7 +63,7 @@ describe('EmbedContentEntity', async () => {
     let embed_content_ref01_data = setup.data.new.embed_content['embed_content_ref01']
     embed_content_ref01_data['model'] = setup.idmap['model01']
 
-    embed_content_ref01_data = await embed_content_ref01_ent.create(embed_content_ref01_data)
+    embed_content_ref01_data = (await embed_content_ref01_ent.create(embed_content_ref01_data)).data()
     assert(null != embed_content_ref01_data)
 
 

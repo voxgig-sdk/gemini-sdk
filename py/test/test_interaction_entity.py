@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gemini_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gemini_sdk import GeminiSDK
-from core import helpers
+from gemini_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,7 +44,7 @@ class TestInteractionEntity:
         interaction_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.interaction"), "interaction_ref01"))
 
-        interaction_ref01_data = helpers.to_map(interaction_ref01_ent.create(interaction_ref01_data, None))
+        interaction_ref01_data = helpers.to_map(runner.entity_data(interaction_ref01_ent.create(interaction_ref01_data, None)))
         assert interaction_ref01_data is not None
 
 

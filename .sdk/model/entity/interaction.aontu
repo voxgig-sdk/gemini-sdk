@@ -16,18 +16,8 @@ main: kit: entity: interaction: {
       type: "`$STRING`"
     }
     {
-      name: "metadata"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       name: "model"
       req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "output_text"
-      req: false
       type: "`$STRING`"
     }
   ]
@@ -45,7 +35,7 @@ main: kit: entity: interaction: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.metadata`"
           }
         }
       ]

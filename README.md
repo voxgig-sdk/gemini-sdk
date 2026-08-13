@@ -25,6 +25,7 @@ support (`list`, `load`, `create`):
 const client = new GeminiSDK()
 const embedcontent = await client.EmbedContent().create({
   model: 'example',
+  content: {},
 })
 ```
 
@@ -40,9 +41,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GeminiSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GeminiSDK.test({
+  entity: {
+    model: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const models = await client.Model().list()
-// models is an array of bare Model records populated with mock data
+// models is an array of Model entities, populated with mock data
+// — call models[0].data() for the record itself
 console.log(models)
 ```
 
@@ -338,6 +348,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://ai.google.dev/docs](https://ai.google.dev/docs)
 

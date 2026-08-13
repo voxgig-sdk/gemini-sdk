@@ -8,6 +8,7 @@ guide: {
   entity: embed_content: {
     path: "/models/{model}:embedContent": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.embedding`")|top
     }
   }
 
@@ -23,6 +24,7 @@ guide: {
   entity: interaction: {
     path: "/interactions": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.metadata`")|top
     }
   }
 
@@ -32,6 +34,7 @@ guide: {
   entity: model: {
     path: "/models": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.models`")|top
     }
     path: "/models/{model}": {
       rename: param: "model": *"id"

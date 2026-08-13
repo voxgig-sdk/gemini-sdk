@@ -38,7 +38,7 @@ class GenerateContentEntityTest < Minitest::Test
     generate_content_ref01_data["model"] = setup[:idmap]["model01"]
 
     generate_content_ref01_data_result = generate_content_ref01_ent.create(generate_content_ref01_data, nil)
-    generate_content_ref01_data = Helpers.to_map(generate_content_ref01_data_result)
+    generate_content_ref01_data = Helpers.to_map(generate_content_ref01_data_result.respond_to?(:data_get) ? generate_content_ref01_data_result.data_get : generate_content_ref01_data_result)
     assert !generate_content_ref01_data.nil?
 
   end

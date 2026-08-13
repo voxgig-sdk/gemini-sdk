@@ -42,7 +42,7 @@ describe("GenerateContentEntity", function()
 
     local generate_content_ref01_data_result, err = generate_content_ref01_ent:create(generate_content_ref01_data, nil)
     assert.is_nil(err)
-    generate_content_ref01_data = helpers.to_map(generate_content_ref01_data_result)
+    generate_content_ref01_data = helpers.to_map(type(generate_content_ref01_data_result) == 'table' and generate_content_ref01_data_result.data_get and generate_content_ref01_data_result:data_get() or generate_content_ref01_data_result)
     assert.is_not_nil(generate_content_ref01_data)
 
   end)

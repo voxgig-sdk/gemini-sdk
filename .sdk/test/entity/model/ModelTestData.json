@@ -3,31 +3,31 @@
     "model": {
       "MODEL00": {
         "description": "s46",
-        "display_name": "s47",
-        "input_token_limit": "s48",
+        "displayName": "s47",
+        "inputTokenLimit": "s48",
         "name": "s49",
-        "output_token_limit": "s4a",
-        "supported_generation_method": [],
+        "outputTokenLimit": "s4a",
+        "supportedGenerationMethods": [],
         "version": "s4c",
         "id": "MODEL00"
       },
       "MODEL01": {
         "description": "s8c",
-        "display_name": "s8d",
-        "input_token_limit": "s8e",
+        "displayName": "s8d",
+        "inputTokenLimit": "s8e",
         "name": "s8f",
-        "output_token_limit": "s90",
-        "supported_generation_method": [],
+        "outputTokenLimit": "s90",
+        "supportedGenerationMethods": [],
         "version": "s92",
         "id": "MODEL01"
       },
       "MODEL02": {
         "description": "sd2",
-        "display_name": "sd3",
-        "input_token_limit": "sd4",
+        "displayName": "sd3",
+        "inputTokenLimit": "sd4",
         "name": "sd5",
-        "output_token_limit": "sd6",
-        "supported_generation_method": [],
+        "outputTokenLimit": "sd6",
+        "supportedGenerationMethods": [],
         "version": "sd8",
         "id": "MODEL02"
       }
@@ -37,11 +37,11 @@
     "model": {
       "model_ref01": {
         "description": "s118",
-        "display_name": "s119",
-        "input_token_limit": "s11a",
+        "displayName": "s119",
+        "inputTokenLimit": "s11a",
         "name": "s11b",
-        "output_token_limit": "s11c",
-        "supported_generation_method": [],
+        "outputTokenLimit": "s11c",
+        "supportedGenerationMethods": [],
         "version": "s11e"
       }
     }

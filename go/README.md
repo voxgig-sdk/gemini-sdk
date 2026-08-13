@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a embedContent.
-    created, err := client.EmbedContent(nil).Create(map[string]any{"model": "example_model"}, nil)
+    created, err := client.EmbedContent(nil).Create(map[string]any{"model": "example_model", "content": map[string]any{}}, nil)
     if err != nil {
         panic(err)
     }
@@ -271,9 +271,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"content"` |  |
-| `"embedding"` |  |
-| `"task_type"` |  |
+| `"taskType"` |  |
 | `"title"` |  |
+| `"values"` |  |
 
 Operations: Create.
 
@@ -283,13 +283,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `"candidate"` |  |
-| `"content"` |  |
-| `"generation_config"` |  |
-| `"prompt_feedback"` |  |
-| `"safety_setting"` |  |
-| `"tool"` |  |
-| `"usage_metadata"` |  |
+| `"candidates"` |  |
+| `"contents"` |  |
+| `"generationConfig"` |  |
+| `"promptFeedback"` |  |
+| `"safetySettings"` |  |
+| `"tools"` |  |
+| `"usageMetadata"` |  |
 
 Operations: Create.
 
@@ -301,9 +301,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `"config"` |  |
 | `"input"` |  |
-| `"metadata"` |  |
 | `"model"` |  |
-| `"output_text"` |  |
 
 Operations: Create.
 
@@ -323,11 +321,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"display_name"` |  |
-| `"input_token_limit"` |  |
+| `"displayName"` |  |
+| `"inputTokenLimit"` |  |
 | `"name"` |  |
-| `"output_token_limit"` |  |
-| `"supported_generation_method"` |  |
+| `"outputTokenLimit"` |  |
+| `"supportedGenerationMethods"` |  |
 | `"version"` |  |
 
 Operations: List, Load.
@@ -354,15 +352,16 @@ Create an instance: `embedContent := client.EmbedContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `map[string]any` |  |
-| `embedding` | `map[string]any` |  |
-| `task_type` | `string` |  |
+| `taskType` | `string` |  |
 | `title` | `string` |  |
+| `values` | `[]any` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.EmbedContent(nil).Create(map[string]any{
     "model": "example_model",
+    "content": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -385,19 +384,20 @@ Create an instance: `generateContent := client.GenerateContent(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `[]any` |  |
-| `content` | `[]any` |  |
-| `generation_config` | `map[string]any` |  |
-| `prompt_feedback` | `map[string]any` |  |
-| `safety_setting` | `[]any` |  |
-| `tool` | `[]any` |  |
-| `usage_metadata` | `map[string]any` |  |
+| `candidates` | `[]any` |  |
+| `contents` | `[]any` |  |
+| `generationConfig` | `map[string]any` |  |
+| `promptFeedback` | `map[string]any` |  |
+| `safetySettings` | `[]any` |  |
+| `tools` | `[]any` |  |
+| `usageMetadata` | `map[string]any` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.GenerateContent(nil).Create(map[string]any{
     "model": "example_model",
+    "contents": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -422,9 +422,7 @@ Create an instance: `interaction := client.Interaction(nil)`
 | --- | --- | --- |
 | `config` | `map[string]any` |  |
 | `input` | `string` |  |
-| `metadata` | `map[string]any` |  |
 | `model` | `string` |  |
-| `output_text` | `string` |  |
 
 #### Example: Create
 
@@ -461,11 +459,11 @@ Create an instance: `model := client.Model(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `display_name` | `string` |  |
-| `input_token_limit` | `int` |  |
+| `displayName` | `string` |  |
+| `inputTokenLimit` | `int` |  |
 | `name` | `string` |  |
-| `output_token_limit` | `int` |  |
-| `supported_generation_method` | `[]any` |  |
+| `outputTokenLimit` | `int` |  |
+| `supportedGenerationMethods` | `[]any` |  |
 | `version` | `string` |  |
 
 #### Example: Load

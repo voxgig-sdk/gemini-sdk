@@ -59,7 +59,7 @@ func TestGenerateContentEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		generateContentRef01Data = core.ToMapAny(generateContentRef01DataResult)
+		generateContentRef01Data = core.ToMapAny(entityData(generateContentRef01DataResult))
 		if generateContentRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

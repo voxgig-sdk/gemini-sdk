@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gemini_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gemini_sdk import GeminiSDK
-from core import helpers
+from gemini_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -45,7 +45,7 @@ class TestEmbedContentEntity:
             vs.getpath(setup["data"], "new.embed_content"), "embed_content_ref01"))
         embed_content_ref01_data["model"] = setup["idmap"]["model01"]
 
-        embed_content_ref01_data = helpers.to_map(embed_content_ref01_ent.create(embed_content_ref01_data, None))
+        embed_content_ref01_data = helpers.to_map(runner.entity_data(embed_content_ref01_ent.create(embed_content_ref01_data, None)))
         assert embed_content_ref01_data is not None
 
 

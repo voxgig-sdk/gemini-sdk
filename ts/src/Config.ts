@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Gemini',
   }
 
 
@@ -79,23 +79,23 @@ class Config {
         },
         {
           "active": true,
-          "name": "embedding",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
-        },
-        {
-          "active": true,
-          "name": "task_type",
+          "name": "taskType",
           "req": false,
           "type": "`$STRING`",
-          "index$": 2
+          "index$": 1
         },
         {
           "active": true,
           "name": "title",
           "req": false,
           "type": "`$STRING`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "values",
+          "req": false,
+          "type": "`$ARRAY`",
           "index$": 3
         }
       ],
@@ -131,6 +131,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/models/{model}:embedContent",
               "parts": [
@@ -145,7 +146,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.embedding`"
               },
               "index$": 0
             }
@@ -165,49 +166,49 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "candidate",
+          "name": "candidates",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "content",
+          "name": "contents",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "generation_config",
+          "name": "generationConfig",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "prompt_feedback",
+          "name": "promptFeedback",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "safety_setting",
+          "name": "safetySettings",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "tool",
+          "name": "tools",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "usage_metadata",
+          "name": "usageMetadata",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 6
@@ -245,6 +246,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/models/{model}:generateContent",
               "parts": [
@@ -289,6 +291,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "POST",
               "orig": "/models/{model}:streamGenerateContent",
               "parts": [
@@ -337,24 +340,10 @@ class Config {
         },
         {
           "active": true,
-          "name": "metadata",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 2
-        },
-        {
-          "active": true,
           "name": "model",
           "req": true,
           "type": "`$STRING`",
-          "index$": 3
-        },
-        {
-          "active": true,
-          "name": "output_text",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "index$": 2
         }
       ],
       "name": "interaction",
@@ -366,6 +355,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/interactions",
               "parts": [
@@ -374,7 +364,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.metadata`"
               },
               "index$": 0
             }
@@ -405,14 +395,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "display_name",
+          "name": "displayName",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "input_token_limit",
+          "name": "inputTokenLimit",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 2
@@ -426,14 +416,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "output_token_limit",
+          "name": "outputTokenLimit",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "supported_generation_method",
+          "name": "supportedGenerationMethods",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 5
@@ -483,6 +473,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/models",
               "parts": [
@@ -497,7 +488,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.models`"
               },
               "index$": 0
             }
@@ -534,6 +525,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/models/{model}",
               "parts": [

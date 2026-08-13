@@ -45,7 +45,7 @@ class GenerateContentEntityTest extends TestCase
         $generate_content_ref01_data["model"] = $setup["idmap"]["model01"];
 
         $generate_content_ref01_data_result = $generate_content_ref01_ent->create($generate_content_ref01_data, null);
-        $generate_content_ref01_data = Helpers::to_map($generate_content_ref01_data_result);
+        $generate_content_ref01_data = Helpers::to_map(is_object($generate_content_ref01_data_result) && method_exists($generate_content_ref01_data_result, 'data_get') ? $generate_content_ref01_data_result->data_get() : $generate_content_ref01_data_result);
         $this->assertNotNull($generate_content_ref01_data);
 
     }

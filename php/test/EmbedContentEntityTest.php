@@ -45,7 +45,7 @@ class EmbedContentEntityTest extends TestCase
         $embed_content_ref01_data["model"] = $setup["idmap"]["model01"];
 
         $embed_content_ref01_data_result = $embed_content_ref01_ent->create($embed_content_ref01_data, null);
-        $embed_content_ref01_data = Helpers::to_map($embed_content_ref01_data_result);
+        $embed_content_ref01_data = Helpers::to_map(is_object($embed_content_ref01_data_result) && method_exists($embed_content_ref01_data_result, 'data_get') ? $embed_content_ref01_data_result->data_get() : $embed_content_ref01_data_result);
         $this->assertNotNull($embed_content_ref01_data);
 
     }

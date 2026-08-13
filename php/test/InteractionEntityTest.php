@@ -44,7 +44,7 @@ class InteractionEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.interaction"), "interaction_ref01"));
 
         $interaction_ref01_data_result = $interaction_ref01_ent->create($interaction_ref01_data, null);
-        $interaction_ref01_data = Helpers::to_map($interaction_ref01_data_result);
+        $interaction_ref01_data = Helpers::to_map(is_object($interaction_ref01_data_result) && method_exists($interaction_ref01_data_result, 'data_get') ? $interaction_ref01_data_result->data_get() : $interaction_ref01_data_result);
         $this->assertNotNull($interaction_ref01_data);
 
     }

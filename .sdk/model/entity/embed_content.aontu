@@ -11,12 +11,7 @@ main: kit: entity: embed_content: {
       type: "`$OBJECT`"
     }
     {
-      name: "embedding"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "task_type"
+      name: "taskType"
       req: false
       type: "`$STRING`"
     }
@@ -24,6 +19,11 @@ main: kit: entity: embed_content: {
       name: "title"
       req: false
       type: "`$STRING`"
+    }
+    {
+      name: "values"
+      req: false
+      type: "`$ARRAY`"
     }
   ]
 
@@ -68,7 +68,7 @@ main: kit: entity: embed_content: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.embedding`"
           }
         }
       ]

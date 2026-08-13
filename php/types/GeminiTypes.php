@@ -16,33 +16,44 @@ declare(strict_types=1);
 class EmbedContent
 {
     public array $content;
-    public ?array $embedding = null;
-    public ?string $task_type = null;
+    public ?string $taskType = null;
     public ?string $title = null;
+    public ?array $values = null;
 }
 
 /** Request payload for EmbedContent#create. */
 class EmbedContentCreateData
 {
     public string $model;
+    public array $content;
+    public ?string $taskType = null;
+    public ?string $title = null;
+    public ?array $values = null;
 }
 
 /** GenerateContent entity data model. */
 class GenerateContent
 {
-    public ?array $candidate = null;
-    public array $content;
-    public ?array $generation_config = null;
-    public ?array $prompt_feedback = null;
-    public ?array $safety_setting = null;
-    public ?array $tool = null;
-    public ?array $usage_metadata = null;
+    public ?array $candidates = null;
+    public array $contents;
+    public ?array $generationConfig = null;
+    public ?array $promptFeedback = null;
+    public ?array $safetySettings = null;
+    public ?array $tools = null;
+    public ?array $usageMetadata = null;
 }
 
 /** Request payload for GenerateContent#create. */
 class GenerateContentCreateData
 {
     public string $model;
+    public ?array $candidates = null;
+    public array $contents;
+    public ?array $generationConfig = null;
+    public ?array $promptFeedback = null;
+    public ?array $safetySettings = null;
+    public ?array $tools = null;
+    public ?array $usageMetadata = null;
 }
 
 /** Interaction entity data model. */
@@ -50,9 +61,7 @@ class Interaction
 {
     public ?array $config = null;
     public string $input;
-    public ?array $metadata = null;
     public string $model;
-    public ?string $output_text = null;
 }
 
 /** Request payload for Interaction#create. */
@@ -60,9 +69,7 @@ class InteractionCreateData
 {
     public ?array $config = null;
     public string $input;
-    public ?array $metadata = null;
     public string $model;
-    public ?string $output_text = null;
 }
 
 /** ListModel entity data model. */
@@ -74,11 +81,11 @@ class ListModel
 class Model
 {
     public ?string $description = null;
-    public ?string $display_name = null;
-    public ?int $input_token_limit = null;
+    public ?string $displayName = null;
+    public ?int $inputTokenLimit = null;
     public ?string $name = null;
-    public ?int $output_token_limit = null;
-    public ?array $supported_generation_method = null;
+    public ?int $outputTokenLimit = null;
+    public ?array $supportedGenerationMethods = null;
     public ?string $version = null;
 }
 
@@ -92,11 +99,11 @@ class ModelLoadMatch
 class ModelListMatch
 {
     public ?string $description = null;
-    public ?string $display_name = null;
-    public ?int $input_token_limit = null;
+    public ?string $displayName = null;
+    public ?int $inputTokenLimit = null;
     public ?string $name = null;
-    public ?int $output_token_limit = null;
-    public ?array $supported_generation_method = null;
+    public ?int $outputTokenLimit = null;
+    public ?array $supportedGenerationMethods = null;
     public ?string $version = null;
 }
 

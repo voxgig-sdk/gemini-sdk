@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Gemini SDK exists test
 
 import pytest
 from gemini_sdk import GeminiSDK

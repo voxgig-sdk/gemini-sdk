@@ -2,35 +2,35 @@
   "existing": {
     "generate_content": {
       "GENERATE_CONTENT00": {
-        "candidate": [],
-        "content": [],
-        "generation_config": {},
-        "prompt_feedback": {},
-        "safety_setting": [],
-        "tool": [],
-        "usage_metadata": {},
+        "candidates": [],
+        "contents": [],
+        "generationConfig": {},
+        "promptFeedback": {},
+        "safetySettings": [],
+        "tools": [],
+        "usageMetadata": {},
         "model": "MODEL01",
         "id": "GENERATE_CONTENT00"
       },
       "GENERATE_CONTENT01": {
-        "candidate": [],
-        "content": [],
-        "generation_config": {},
-        "prompt_feedback": {},
-        "safety_setting": [],
-        "tool": [],
-        "usage_metadata": {},
+        "candidates": [],
+        "contents": [],
+        "generationConfig": {},
+        "promptFeedback": {},
+        "safetySettings": [],
+        "tools": [],
+        "usageMetadata": {},
         "model": "MODEL01",
         "id": "GENERATE_CONTENT01"
       },
       "GENERATE_CONTENT02": {
-        "candidate": [],
-        "content": [],
-        "generation_config": {},
-        "prompt_feedback": {},
-        "safety_setting": [],
-        "tool": [],
-        "usage_metadata": {},
+        "candidates": [],
+        "contents": [],
+        "generationConfig": {},
+        "promptFeedback": {},
+        "safetySettings": [],
+        "tools": [],
+        "usageMetadata": {},
         "model": "MODEL01",
         "id": "GENERATE_CONTENT02"
       }
@@ -39,13 +39,13 @@
   "new": {
     "generate_content": {
       "generate_content_ref01": {
-        "candidate": [],
-        "content": [],
-        "generation_config": {},
-        "prompt_feedback": {},
-        "safety_setting": [],
-        "tool": [],
-        "usage_metadata": {}
+        "candidates": [],
+        "contents": [],
+        "generationConfig": {},
+        "promptFeedback": {},
+        "safetySettings": [],
+        "tools": [],
+        "usageMetadata": {}
       }
     }
   }

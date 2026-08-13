@@ -116,9 +116,9 @@ fmt.Println(embedContent.GetName()) // "embed_content"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `map[string]any` | Yes |  |
-| `embedding` | `map[string]any` | No |  |
-| `task_type` | `string` | No |  |
+| `taskType` | `string` | No |  |
 | `title` | `string` | No |  |
+| `values` | `[]any` | No |  |
 
 ### Operations
 
@@ -129,6 +129,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.EmbedContent(nil).Create(map[string]any{
     "model": "example_model",
+    "content": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -171,13 +172,13 @@ fmt.Println(generateContent.GetName()) // "generate_content"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `[]any` | No |  |
-| `content` | `[]any` | Yes |  |
-| `generation_config` | `map[string]any` | No |  |
-| `prompt_feedback` | `map[string]any` | No |  |
-| `safety_setting` | `[]any` | No |  |
-| `tool` | `[]any` | No |  |
-| `usage_metadata` | `map[string]any` | No |  |
+| `candidates` | `[]any` | No |  |
+| `contents` | `[]any` | Yes |  |
+| `generationConfig` | `map[string]any` | No |  |
+| `promptFeedback` | `map[string]any` | No |  |
+| `safetySettings` | `[]any` | No |  |
+| `tools` | `[]any` | No |  |
+| `usageMetadata` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -188,6 +189,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.GenerateContent(nil).Create(map[string]any{
     "model": "example_model",
+    "contents": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -232,9 +234,7 @@ fmt.Println(interaction.GetName()) // "interaction"
 | --- | --- | --- | --- |
 | `config` | `map[string]any` | No |  |
 | `input` | `string` | Yes |  |
-| `metadata` | `map[string]any` | No |  |
 | `model` | `string` | Yes |  |
-| `output_text` | `string` | No |  |
 
 ### Operations
 
@@ -320,11 +320,11 @@ fmt.Println(model.GetName()) // "model"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `input_token_limit` | `int` | No |  |
+| `displayName` | `string` | No |  |
+| `inputTokenLimit` | `int` | No |  |
 | `name` | `string` | No |  |
-| `output_token_limit` | `int` | No |  |
-| `supported_generation_method` | `[]any` | No |  |
+| `outputTokenLimit` | `int` | No |  |
+| `supportedGenerationMethods` | `[]any` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

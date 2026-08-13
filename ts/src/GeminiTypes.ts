@@ -7,43 +7,50 @@
 
 export interface EmbedContent {
   content: Record<string, any>
-  embedding?: Record<string, any>
-  task_type?: string
+  taskType?: string
   title?: string
+  values?: any[]
 }
 
 export interface EmbedContentCreateData {
   model: string
+  content: Record<string, any>
+  taskType?: string
+  title?: string
+  values?: any[]
 }
 
 export interface GenerateContent {
-  candidate?: any[]
-  content: any[]
-  generation_config?: Record<string, any>
-  prompt_feedback?: Record<string, any>
-  safety_setting?: any[]
-  tool?: any[]
-  usage_metadata?: Record<string, any>
+  candidates?: any[]
+  contents: any[]
+  generationConfig?: Record<string, any>
+  promptFeedback?: Record<string, any>
+  safetySettings?: any[]
+  tools?: any[]
+  usageMetadata?: Record<string, any>
 }
 
 export interface GenerateContentCreateData {
   model: string
+  candidates?: any[]
+  contents: any[]
+  generationConfig?: Record<string, any>
+  promptFeedback?: Record<string, any>
+  safetySettings?: any[]
+  tools?: any[]
+  usageMetadata?: Record<string, any>
 }
 
 export interface Interaction {
   config?: Record<string, any>
   input: string
-  metadata?: Record<string, any>
   model: string
-  output_text?: string
 }
 
 export interface InteractionCreateData {
   config?: Record<string, any>
   input: string
-  metadata?: Record<string, any>
   model: string
-  output_text?: string
 }
 
 export interface ListModel {
@@ -51,11 +58,11 @@ export interface ListModel {
 
 export interface Model {
   description?: string
-  display_name?: string
-  input_token_limit?: number
+  displayName?: string
+  inputTokenLimit?: number
   name?: string
-  output_token_limit?: number
-  supported_generation_method?: any[]
+  outputTokenLimit?: number
+  supportedGenerationMethods?: any[]
   version?: string
 }
 
@@ -65,11 +72,11 @@ export interface ModelLoadMatch {
 
 export interface ModelListMatch {
   description?: string
-  display_name?: string
-  input_token_limit?: number
+  displayName?: string
+  inputTokenLimit?: number
   name?: string
-  output_token_limit?: number
-  supported_generation_method?: any[]
+  outputTokenLimit?: number
+  supportedGenerationMethods?: any[]
   version?: string
 }
 

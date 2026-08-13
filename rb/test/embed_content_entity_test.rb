@@ -38,7 +38,7 @@ class EmbedContentEntityTest < Minitest::Test
     embed_content_ref01_data["model"] = setup[:idmap]["model01"]
 
     embed_content_ref01_data_result = embed_content_ref01_ent.create(embed_content_ref01_data, nil)
-    embed_content_ref01_data = Helpers.to_map(embed_content_ref01_data_result)
+    embed_content_ref01_data = Helpers.to_map(embed_content_ref01_data_result.respond_to?(:data_get) ? embed_content_ref01_data_result.data_get : embed_content_ref01_data_result)
     assert !embed_content_ref01_data.nil?
 
   end

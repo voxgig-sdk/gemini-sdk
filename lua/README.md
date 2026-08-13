@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:EmbedContent():create({ model = "example_model" })
+local created, err = client:EmbedContent():create({ model = "example_model", content = {} })
 if err then error(err) end
 
 ```
@@ -224,9 +224,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local embed_content, err = client:EmbedContent():load()
+    local model, err = client:Model():load({ id = "example_id" })
     if err then error(err) end
-    -- embed_content is the loaded record
+    -- model is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -238,9 +238,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `embedding` |  |
-| `task_type` |  |
+| `taskType` |  |
 | `title` |  |
+| `values` |  |
 
 Operations: Create.
 
@@ -250,13 +250,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `content` |  |
-| `generation_config` |  |
-| `prompt_feedback` |  |
-| `safety_setting` |  |
-| `tool` |  |
-| `usage_metadata` |  |
+| `candidates` |  |
+| `contents` |  |
+| `generationConfig` |  |
+| `promptFeedback` |  |
+| `safetySettings` |  |
+| `tools` |  |
+| `usageMetadata` |  |
 
 Operations: Create.
 
@@ -268,9 +268,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `config` |  |
 | `input` |  |
-| `metadata` |  |
 | `model` |  |
-| `output_text` |  |
 
 Operations: Create.
 
@@ -290,11 +288,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `display_name` |  |
-| `input_token_limit` |  |
+| `displayName` |  |
+| `inputTokenLimit` |  |
 | `name` |  |
-| `output_token_limit` |  |
-| `supported_generation_method` |  |
+| `outputTokenLimit` |  |
+| `supportedGenerationMethods` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -321,15 +319,16 @@ Create an instance: `local embed_content = client:EmbedContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `table` |  |
-| `embedding` | `table` |  |
-| `task_type` | `string` |  |
+| `taskType` | `string` |  |
 | `title` | `string` |  |
+| `values` | `table` |  |
 
 #### Example: Create
 
 ```lua
 local embed_content, err = client:EmbedContent():create({
   model = "example_model", -- string
+  content = {}, -- table
 })
 ```
 
@@ -348,19 +347,20 @@ Create an instance: `local generate_content = client:GenerateContent(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `table` |  |
-| `content` | `table` |  |
-| `generation_config` | `table` |  |
-| `prompt_feedback` | `table` |  |
-| `safety_setting` | `table` |  |
-| `tool` | `table` |  |
-| `usage_metadata` | `table` |  |
+| `candidates` | `table` |  |
+| `contents` | `table` |  |
+| `generationConfig` | `table` |  |
+| `promptFeedback` | `table` |  |
+| `safetySettings` | `table` |  |
+| `tools` | `table` |  |
+| `usageMetadata` | `table` |  |
 
 #### Example: Create
 
 ```lua
 local generate_content, err = client:GenerateContent():create({
   model = "example_model", -- string
+  contents = {}, -- table
 })
 ```
 
@@ -381,9 +381,7 @@ Create an instance: `local interaction = client:Interaction(nil)`
 | --- | --- | --- |
 | `config` | `table` |  |
 | `input` | `string` |  |
-| `metadata` | `table` |  |
 | `model` | `string` |  |
-| `output_text` | `string` |  |
 
 #### Example: Create
 
@@ -416,11 +414,11 @@ Create an instance: `local model = client:Model(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `display_name` | `string` |  |
-| `input_token_limit` | `number` |  |
+| `displayName` | `string` |  |
+| `inputTokenLimit` | `number` |  |
 | `name` | `string` |  |
-| `output_token_limit` | `number` |  |
-| `supported_generation_method` | `table` |  |
+| `outputTokenLimit` | `number` |  |
+| `supportedGenerationMethods` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load

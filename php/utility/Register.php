@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ GeminiUtility::setRegistrar(function (GeminiUtility $u): void {
     $u->prepare_params = [GeminiPrepareParams::class, 'call'];
     $u->prepare_path = [GeminiPreparePath::class, 'call'];
     $u->prepare_query = [GeminiPrepareQuery::class, 'call'];
+    $u->graphql_body = [GeminiGraphql::class, 'body'];
+    $u->graphql_errors = [GeminiGraphql::class, 'errors'];
     $u->result_basic = [GeminiResultBasic::class, 'call'];
     $u->result_body = [GeminiResultBody::class, 'call'];
     $u->result_headers = [GeminiResultHeaders::class, 'call'];

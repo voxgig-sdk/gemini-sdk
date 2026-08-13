@@ -63,7 +63,7 @@ describe('GenerateContentEntity', async () => {
     let generate_content_ref01_data = setup.data.new.generate_content['generate_content_ref01']
     generate_content_ref01_data['model'] = setup.idmap['model01']
 
-    generate_content_ref01_data = await generate_content_ref01_ent.create(generate_content_ref01_data)
+    generate_content_ref01_data = (await generate_content_ref01_ent.create(generate_content_ref01_data)).data()
     assert(null != generate_content_ref01_data)
 
 

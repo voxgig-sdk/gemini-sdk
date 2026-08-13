@@ -35,8 +35,8 @@ client = GeminiSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created EmbedContent record.
-created = client.EmbedContent.create({ "model" => "example_model" })
+# create returns the ENTITY — call data_get for the created EmbedContent record.
+created = client.EmbedContent.create({ "model" => "example_model", "content" => {} })
 
 ```
 
@@ -118,7 +118,8 @@ client = GeminiSDK.test({
   "entity" => { "model" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 model = client.Model.list()
 puts model
 ```
@@ -244,9 +245,9 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `embedding` |  |
-| `task_type` |  |
+| `taskType` |  |
 | `title` |  |
+| `values` |  |
 
 Operations: Create.
 
@@ -256,13 +257,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `content` |  |
-| `generation_config` |  |
-| `prompt_feedback` |  |
-| `safety_setting` |  |
-| `tool` |  |
-| `usage_metadata` |  |
+| `candidates` |  |
+| `contents` |  |
+| `generationConfig` |  |
+| `promptFeedback` |  |
+| `safetySettings` |  |
+| `tools` |  |
+| `usageMetadata` |  |
 
 Operations: Create.
 
@@ -274,9 +275,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `config` |  |
 | `input` |  |
-| `metadata` |  |
 | `model` |  |
-| `output_text` |  |
 
 Operations: Create.
 
@@ -296,11 +295,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `display_name` |  |
-| `input_token_limit` |  |
+| `displayName` |  |
+| `inputTokenLimit` |  |
 | `name` |  |
-| `output_token_limit` |  |
-| `supported_generation_method` |  |
+| `outputTokenLimit` |  |
+| `supportedGenerationMethods` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -327,15 +326,16 @@ Create an instance: `embed_content = client.EmbedContent`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `Hash` |  |
-| `embedding` | `Hash` |  |
-| `task_type` | `String` |  |
+| `taskType` | `String` |  |
 | `title` | `String` |  |
+| `values` | `Array` |  |
 
 #### Example: Create
 
 ```ruby
 embed_content = client.EmbedContent.create({
   "model" => "example_model", # String
+  "content" => {}, # Hash
 })
 ```
 
@@ -354,19 +354,20 @@ Create an instance: `generate_content = client.GenerateContent`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `Array` |  |
-| `content` | `Array` |  |
-| `generation_config` | `Hash` |  |
-| `prompt_feedback` | `Hash` |  |
-| `safety_setting` | `Array` |  |
-| `tool` | `Array` |  |
-| `usage_metadata` | `Hash` |  |
+| `candidates` | `Array` |  |
+| `contents` | `Array` |  |
+| `generationConfig` | `Hash` |  |
+| `promptFeedback` | `Hash` |  |
+| `safetySettings` | `Array` |  |
+| `tools` | `Array` |  |
+| `usageMetadata` | `Hash` |  |
 
 #### Example: Create
 
 ```ruby
 generate_content = client.GenerateContent.create({
   "model" => "example_model", # String
+  "contents" => [], # Array
 })
 ```
 
@@ -387,9 +388,7 @@ Create an instance: `interaction = client.Interaction`
 | --- | --- | --- |
 | `config` | `Hash` |  |
 | `input` | `String` |  |
-| `metadata` | `Hash` |  |
 | `model` | `String` |  |
-| `output_text` | `String` |  |
 
 #### Example: Create
 
@@ -422,17 +421,17 @@ Create an instance: `model = client.Model`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `display_name` | `String` |  |
-| `input_token_limit` | `Integer` |  |
+| `displayName` | `String` |  |
+| `inputTokenLimit` | `Integer` |  |
 | `name` | `String` |  |
-| `output_token_limit` | `Integer` |  |
-| `supported_generation_method` | `Array` |  |
+| `outputTokenLimit` | `Integer` |  |
+| `supportedGenerationMethods` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Model record (raises on error).
+# load returns the ENTITY — call data_get for the Model record (raises on error).
 model = client.Model.load({ "id" => "model_id" })
 ```
 

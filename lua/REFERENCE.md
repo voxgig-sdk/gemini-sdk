@@ -108,9 +108,9 @@ local embed_content = client:EmbedContent(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `table` | Yes |  |
-| `embedding` | `table` | No |  |
-| `task_type` | `string` | No |  |
+| `taskType` | `string` | No |  |
 | `title` | `string` | No |  |
+| `values` | `table` | No |  |
 
 ### Operations
 
@@ -121,6 +121,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:EmbedContent():create({
   model = --[[ string ]],
+  content = --[[ table ]],
 })
 ```
 
@@ -164,13 +165,13 @@ local generate_content = client:GenerateContent(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `table` | No |  |
-| `content` | `table` | Yes |  |
-| `generation_config` | `table` | No |  |
-| `prompt_feedback` | `table` | No |  |
-| `safety_setting` | `table` | No |  |
-| `tool` | `table` | No |  |
-| `usage_metadata` | `table` | No |  |
+| `candidates` | `table` | No |  |
+| `contents` | `table` | Yes |  |
+| `generationConfig` | `table` | No |  |
+| `promptFeedback` | `table` | No |  |
+| `safetySettings` | `table` | No |  |
+| `tools` | `table` | No |  |
+| `usageMetadata` | `table` | No |  |
 
 ### Operations
 
@@ -181,6 +182,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:GenerateContent():create({
   model = --[[ string ]],
+  contents = --[[ table ]],
 })
 ```
 
@@ -226,9 +228,7 @@ local interaction = client:Interaction(nil)
 | --- | --- | --- | --- |
 | `config` | `table` | No |  |
 | `input` | `string` | Yes |  |
-| `metadata` | `table` | No |  |
 | `model` | `string` | Yes |  |
-| `output_text` | `string` | No |  |
 
 ### Operations
 
@@ -320,11 +320,11 @@ local model = client:Model(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `input_token_limit` | `number` | No |  |
+| `displayName` | `string` | No |  |
+| `inputTokenLimit` | `number` | No |  |
 | `name` | `string` | No |  |
-| `output_token_limit` | `number` | No |  |
-| `supported_generation_method` | `table` | No |  |
+| `outputTokenLimit` | `number` | No |  |
+| `supportedGenerationMethods` | `table` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

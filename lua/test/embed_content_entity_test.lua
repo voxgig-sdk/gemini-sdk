@@ -42,7 +42,7 @@ describe("EmbedContentEntity", function()
 
     local embed_content_ref01_data_result, err = embed_content_ref01_ent:create(embed_content_ref01_data, nil)
     assert.is_nil(err)
-    embed_content_ref01_data = helpers.to_map(embed_content_ref01_data_result)
+    embed_content_ref01_data = helpers.to_map(type(embed_content_ref01_data_result) == 'table' and embed_content_ref01_data_result.data_get and embed_content_ref01_data_result:data_get() or embed_content_ref01_data_result)
     assert.is_not_nil(embed_content_ref01_data)
 
   end)

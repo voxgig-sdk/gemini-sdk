@@ -110,9 +110,9 @@ $embed_content = $client->EmbedContent();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `array` | Yes |  |
-| `embedding` | `array` | No |  |
-| `task_type` | `string` | No |  |
+| `taskType` | `string` | No |  |
 | `title` | `string` | No |  |
+| `values` | `array` | No |  |
 
 ### Operations
 
@@ -123,6 +123,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->EmbedContent()->create([
   "model" => null, // string
+  "content" => null, // array
 ]);
 ```
 
@@ -166,13 +167,13 @@ $generate_content = $client->GenerateContent();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `array` | No |  |
-| `content` | `array` | Yes |  |
-| `generation_config` | `array` | No |  |
-| `prompt_feedback` | `array` | No |  |
-| `safety_setting` | `array` | No |  |
-| `tool` | `array` | No |  |
-| `usage_metadata` | `array` | No |  |
+| `candidates` | `array` | No |  |
+| `contents` | `array` | Yes |  |
+| `generationConfig` | `array` | No |  |
+| `promptFeedback` | `array` | No |  |
+| `safetySettings` | `array` | No |  |
+| `tools` | `array` | No |  |
+| `usageMetadata` | `array` | No |  |
 
 ### Operations
 
@@ -183,6 +184,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->GenerateContent()->create([
   "model" => null, // string
+  "contents" => null, // array
 ]);
 ```
 
@@ -228,9 +230,7 @@ $interaction = $client->Interaction();
 | --- | --- | --- | --- |
 | `config` | `array` | No |  |
 | `input` | `string` | Yes |  |
-| `metadata` | `array` | No |  |
 | `model` | `string` | Yes |  |
-| `output_text` | `string` | No |  |
 
 ### Operations
 
@@ -322,11 +322,11 @@ $model = $client->Model();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `input_token_limit` | `int` | No |  |
+| `displayName` | `string` | No |  |
+| `inputTokenLimit` | `int` | No |  |
 | `name` | `string` | No |  |
-| `output_token_limit` | `int` | No |  |
-| `supported_generation_method` | `array` | No |  |
+| `outputTokenLimit` | `int` | No |  |
+| `supportedGenerationMethods` | `array` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

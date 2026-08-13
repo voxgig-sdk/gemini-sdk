@@ -38,9 +38,10 @@ const client = new GeminiSDK({
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created EmbedContent
+// Create — returns the created EmbedContent ENTITY (.data() for the record)
 const created = await client.EmbedContent().create({
   model: 'example_model',
+  content: {},
 })
 
 ```
@@ -120,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = GeminiSDK.test()
 
 const model = await client.Model().list()
-// model is a bare entity populated with mock response data
+// model is the entity, populated with mock response data
+// — call model.data() for the record itself
 console.log(model)
 ```
 
@@ -296,9 +298,9 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `embedding` |  |
-| `task_type` |  |
+| `taskType` |  |
 | `title` |  |
+| `values` |  |
 
 Operations: create.
 
@@ -308,13 +310,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `content` |  |
-| `generation_config` |  |
-| `prompt_feedback` |  |
-| `safety_setting` |  |
-| `tool` |  |
-| `usage_metadata` |  |
+| `candidates` |  |
+| `contents` |  |
+| `generationConfig` |  |
+| `promptFeedback` |  |
+| `safetySettings` |  |
+| `tools` |  |
+| `usageMetadata` |  |
 
 Operations: create.
 
@@ -326,9 +328,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `config` |  |
 | `input` |  |
-| `metadata` |  |
 | `model` |  |
-| `output_text` |  |
 
 Operations: create.
 
@@ -348,11 +348,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `display_name` |  |
-| `input_token_limit` |  |
+| `displayName` |  |
+| `inputTokenLimit` |  |
 | `name` |  |
-| `output_token_limit` |  |
-| `supported_generation_method` |  |
+| `outputTokenLimit` |  |
+| `supportedGenerationMethods` |  |
 | `version` |  |
 
 Operations: list, load.
@@ -379,15 +379,16 @@ Create an instance: `const embed_content = client.EmbedContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `Record<string, any>` |  |
-| `embedding` | `Record<string, any>` |  |
-| `task_type` | `string` |  |
+| `taskType` | `string` |  |
 | `title` | `string` |  |
+| `values` | `any[]` |  |
 
 #### Example: Create
 
 ```ts
 const embed_content = await client.EmbedContent().create({
   model: 'example_model',
+  content: {},
 })
 ```
 
@@ -406,19 +407,20 @@ Create an instance: `const generate_content = client.GenerateContent()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `any[]` |  |
-| `content` | `any[]` |  |
-| `generation_config` | `Record<string, any>` |  |
-| `prompt_feedback` | `Record<string, any>` |  |
-| `safety_setting` | `any[]` |  |
-| `tool` | `any[]` |  |
-| `usage_metadata` | `Record<string, any>` |  |
+| `candidates` | `any[]` |  |
+| `contents` | `any[]` |  |
+| `generationConfig` | `Record<string, any>` |  |
+| `promptFeedback` | `Record<string, any>` |  |
+| `safetySettings` | `any[]` |  |
+| `tools` | `any[]` |  |
+| `usageMetadata` | `Record<string, any>` |  |
 
 #### Example: Create
 
 ```ts
 const generate_content = await client.GenerateContent().create({
   model: 'example_model',
+  contents: [],
 })
 ```
 
@@ -439,9 +441,7 @@ Create an instance: `const interaction = client.Interaction()`
 | --- | --- | --- |
 | `config` | `Record<string, any>` |  |
 | `input` | `string` |  |
-| `metadata` | `Record<string, any>` |  |
 | `model` | `string` |  |
-| `output_text` | `string` |  |
 
 #### Example: Create
 
@@ -474,11 +474,11 @@ Create an instance: `const model = client.Model()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `display_name` | `string` |  |
-| `input_token_limit` | `number` |  |
+| `displayName` | `string` |  |
+| `inputTokenLimit` | `number` |  |
 | `name` | `string` |  |
-| `output_token_limit` | `number` |  |
-| `supported_generation_method` | `any[]` |  |
+| `outputTokenLimit` | `number` |  |
+| `supportedGenerationMethods` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load

@@ -111,9 +111,9 @@ embed_content = client.EmbedContent
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `Hash` | Yes |  |
-| `embedding` | `Hash` | No |  |
-| `task_type` | `String` | No |  |
+| `taskType` | `String` | No |  |
 | `title` | `String` | No |  |
+| `values` | `Array` | No |  |
 
 ### Operations
 
@@ -124,6 +124,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.EmbedContent.create({
   "model" => "example_model", # String
+  "content" => {}, # Hash
 })
 ```
 
@@ -167,13 +168,13 @@ generate_content = client.GenerateContent
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `Array` | No |  |
-| `content` | `Array` | Yes |  |
-| `generation_config` | `Hash` | No |  |
-| `prompt_feedback` | `Hash` | No |  |
-| `safety_setting` | `Array` | No |  |
-| `tool` | `Array` | No |  |
-| `usage_metadata` | `Hash` | No |  |
+| `candidates` | `Array` | No |  |
+| `contents` | `Array` | Yes |  |
+| `generationConfig` | `Hash` | No |  |
+| `promptFeedback` | `Hash` | No |  |
+| `safetySettings` | `Array` | No |  |
+| `tools` | `Array` | No |  |
+| `usageMetadata` | `Hash` | No |  |
 
 ### Operations
 
@@ -184,6 +185,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.GenerateContent.create({
   "model" => "example_model", # String
+  "contents" => [], # Array
 })
 ```
 
@@ -229,9 +231,7 @@ interaction = client.Interaction
 | --- | --- | --- | --- |
 | `config` | `Hash` | No |  |
 | `input` | `String` | Yes |  |
-| `metadata` | `Hash` | No |  |
 | `model` | `String` | Yes |  |
-| `output_text` | `String` | No |  |
 
 ### Operations
 
@@ -323,11 +323,11 @@ model = client.Model
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
-| `display_name` | `String` | No |  |
-| `input_token_limit` | `Integer` | No |  |
+| `displayName` | `String` | No |  |
+| `inputTokenLimit` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `output_token_limit` | `Integer` | No |  |
-| `supported_generation_method` | `Array` | No |  |
+| `outputTokenLimit` | `Integer` | No |  |
+| `supportedGenerationMethods` | `Array` | No |  |
 | `version` | `String` | No |  |
 
 ### Operations

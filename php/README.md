@@ -36,8 +36,8 @@ $client = new GeminiSDK([
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created EmbedContent record.
-$created = $client->EmbedContent()->create(["model" => "example_model"]);
+// create() returns the ENTITY — call data_get() for the created EmbedContent record.
+$created = $client->EmbedContent()->create(["model" => "example_model", "content" => []]);
 
 ```
 
@@ -124,7 +124,8 @@ $client = GeminiSDK::test([
     "entity" => ["model" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $model = $client->Model()->list();
 print_r($model);
 ```
@@ -231,7 +232,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -254,9 +255,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `embedding` |  |
-| `task_type` |  |
+| `taskType` |  |
 | `title` |  |
+| `values` |  |
 
 Operations: Create.
 
@@ -266,13 +267,13 @@ API path: `/models/{model}:embedContent`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `content` |  |
-| `generation_config` |  |
-| `prompt_feedback` |  |
-| `safety_setting` |  |
-| `tool` |  |
-| `usage_metadata` |  |
+| `candidates` |  |
+| `contents` |  |
+| `generationConfig` |  |
+| `promptFeedback` |  |
+| `safetySettings` |  |
+| `tools` |  |
+| `usageMetadata` |  |
 
 Operations: Create.
 
@@ -284,9 +285,7 @@ API path: `/models/{model}:generateContent`
 | --- | --- |
 | `config` |  |
 | `input` |  |
-| `metadata` |  |
 | `model` |  |
-| `output_text` |  |
 
 Operations: Create.
 
@@ -306,11 +305,11 @@ API path: ``
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `display_name` |  |
-| `input_token_limit` |  |
+| `displayName` |  |
+| `inputTokenLimit` |  |
 | `name` |  |
-| `output_token_limit` |  |
-| `supported_generation_method` |  |
+| `outputTokenLimit` |  |
+| `supportedGenerationMethods` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -337,15 +336,16 @@ Create an instance: `$embed_content = $client->EmbedContent();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `array` |  |
-| `embedding` | `array` |  |
-| `task_type` | `string` |  |
+| `taskType` | `string` |  |
 | `title` | `string` |  |
+| `values` | `array` |  |
 
 #### Example: Create
 
 ```php
 $embed_content = $client->EmbedContent()->create([
     "model" => null, // string
+    "content" => null, // array
 ]);
 ```
 
@@ -364,19 +364,20 @@ Create an instance: `$generate_content = $client->GenerateContent();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `array` |  |
-| `content` | `array` |  |
-| `generation_config` | `array` |  |
-| `prompt_feedback` | `array` |  |
-| `safety_setting` | `array` |  |
-| `tool` | `array` |  |
-| `usage_metadata` | `array` |  |
+| `candidates` | `array` |  |
+| `contents` | `array` |  |
+| `generationConfig` | `array` |  |
+| `promptFeedback` | `array` |  |
+| `safetySettings` | `array` |  |
+| `tools` | `array` |  |
+| `usageMetadata` | `array` |  |
 
 #### Example: Create
 
 ```php
 $generate_content = $client->GenerateContent()->create([
     "model" => null, // string
+    "contents" => null, // array
 ]);
 ```
 
@@ -397,9 +398,7 @@ Create an instance: `$interaction = $client->Interaction();`
 | --- | --- | --- |
 | `config` | `array` |  |
 | `input` | `string` |  |
-| `metadata` | `array` |  |
 | `model` | `string` |  |
-| `output_text` | `string` |  |
 
 #### Example: Create
 
@@ -432,17 +431,17 @@ Create an instance: `$model = $client->Model();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `display_name` | `string` |  |
-| `input_token_limit` | `int` |  |
+| `displayName` | `string` |  |
+| `inputTokenLimit` | `int` |  |
 | `name` | `string` |  |
-| `output_token_limit` | `int` |  |
-| `supported_generation_method` | `array` |  |
+| `outputTokenLimit` | `int` |  |
+| `supportedGenerationMethods` | `array` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Model record (throws on error).
+// load() returns the ENTITY — call data_get() for the Model record (throws on error).
 $model = $client->Model()->load(["id" => "model_id"]);
 ```
 

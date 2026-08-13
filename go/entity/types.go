@@ -6,53 +6,64 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/gemini-sdk/go/core"
+)
 
 // EmbedContent is the typed data model for the embed_content entity.
 type EmbedContent struct {
 	Content map[string]any `json:"content"`
-	Embedding *map[string]any `json:"embedding,omitempty"`
-	TaskType *string `json:"task_type,omitempty"`
+	TaskType *string `json:"taskType,omitempty"`
 	Title *string `json:"title,omitempty"`
+	Values *[]any `json:"values,omitempty"`
 }
 
 // EmbedContentCreateData is the typed request payload for EmbedContent.CreateTyped.
 type EmbedContentCreateData struct {
 	Model string `json:"model"`
+	Content map[string]any `json:"content"`
+	TaskType *string `json:"taskType,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Values *[]any `json:"values,omitempty"`
 }
 
 // GenerateContent is the typed data model for the generate_content entity.
 type GenerateContent struct {
-	Candidate *[]any `json:"candidate,omitempty"`
-	Content []any `json:"content"`
-	GenerationConfig *map[string]any `json:"generation_config,omitempty"`
-	PromptFeedback *map[string]any `json:"prompt_feedback,omitempty"`
-	SafetySetting *[]any `json:"safety_setting,omitempty"`
-	Tool *[]any `json:"tool,omitempty"`
-	UsageMetadata *map[string]any `json:"usage_metadata,omitempty"`
+	Candidates *[]any `json:"candidates,omitempty"`
+	Contents []any `json:"contents"`
+	GenerationConfig *map[string]any `json:"generationConfig,omitempty"`
+	PromptFeedback *map[string]any `json:"promptFeedback,omitempty"`
+	SafetySettings *[]any `json:"safetySettings,omitempty"`
+	Tools *[]any `json:"tools,omitempty"`
+	UsageMetadata *map[string]any `json:"usageMetadata,omitempty"`
 }
 
 // GenerateContentCreateData is the typed request payload for GenerateContent.CreateTyped.
 type GenerateContentCreateData struct {
 	Model string `json:"model"`
+	Candidates *[]any `json:"candidates,omitempty"`
+	Contents []any `json:"contents"`
+	GenerationConfig *map[string]any `json:"generationConfig,omitempty"`
+	PromptFeedback *map[string]any `json:"promptFeedback,omitempty"`
+	SafetySettings *[]any `json:"safetySettings,omitempty"`
+	Tools *[]any `json:"tools,omitempty"`
+	UsageMetadata *map[string]any `json:"usageMetadata,omitempty"`
 }
 
 // Interaction is the typed data model for the interaction entity.
 type Interaction struct {
 	Config *map[string]any `json:"config,omitempty"`
 	Input string `json:"input"`
-	Metadata *map[string]any `json:"metadata,omitempty"`
 	Model string `json:"model"`
-	OutputText *string `json:"output_text,omitempty"`
 }
 
 // InteractionCreateData is the typed request payload for Interaction.CreateTyped.
 type InteractionCreateData struct {
 	Config *map[string]any `json:"config,omitempty"`
 	Input string `json:"input"`
-	Metadata *map[string]any `json:"metadata,omitempty"`
 	Model string `json:"model"`
-	OutputText *string `json:"output_text,omitempty"`
 }
 
 // ListModel is the typed data model for the list_model entity.
@@ -62,11 +73,11 @@ type ListModel struct {
 // Model is the typed data model for the model entity.
 type Model struct {
 	Description *string `json:"description,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
-	InputTokenLimit *int `json:"input_token_limit,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
+	InputTokenLimit *int `json:"inputTokenLimit,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OutputTokenLimit *int `json:"output_token_limit,omitempty"`
-	SupportedGenerationMethod *[]any `json:"supported_generation_method,omitempty"`
+	OutputTokenLimit *int `json:"outputTokenLimit,omitempty"`
+	SupportedGenerationMethods *[]any `json:"supportedGenerationMethods,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
 
@@ -78,11 +89,11 @@ type ModelLoadMatch struct {
 // ModelListMatch is the typed request payload for Model.ListTyped.
 type ModelListMatch struct {
 	Description *string `json:"description,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
-	InputTokenLimit *int `json:"input_token_limit,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
+	InputTokenLimit *int `json:"inputTokenLimit,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OutputTokenLimit *int `json:"output_token_limit,omitempty"`
-	SupportedGenerationMethod *[]any `json:"supported_generation_method,omitempty"`
+	OutputTokenLimit *int `json:"outputTokenLimit,omitempty"`
+	SupportedGenerationMethods *[]any `json:"supportedGenerationMethods,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
 
@@ -98,12 +109,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -115,12 +140,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

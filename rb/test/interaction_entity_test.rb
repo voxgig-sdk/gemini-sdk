@@ -37,7 +37,7 @@ class InteractionEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.interaction"), "interaction_ref01"))
 
     interaction_ref01_data_result = interaction_ref01_ent.create(interaction_ref01_data, nil)
-    interaction_ref01_data = Helpers.to_map(interaction_ref01_data_result)
+    interaction_ref01_data = Helpers.to_map(interaction_ref01_data_result.respond_to?(:data_get) ? interaction_ref01_data_result.data_get : interaction_ref01_data_result)
     assert !interaction_ref01_data.nil?
 
   end

@@ -8,48 +8,55 @@
 
 ---@class EmbedContent
 ---@field content table
----@field embedding? table
----@field task_type? string
+---@field taskType? string
 ---@field title? string
+---@field values? table
 
 ---@class EmbedContentCreateData
 ---@field model string
+---@field content table
+---@field taskType? string
+---@field title? string
+---@field values? table
 
 ---@class GenerateContent
----@field candidate? table
----@field content table
----@field generation_config? table
----@field prompt_feedback? table
----@field safety_setting? table
----@field tool? table
----@field usage_metadata? table
+---@field candidates? table
+---@field contents table
+---@field generationConfig? table
+---@field promptFeedback? table
+---@field safetySettings? table
+---@field tools? table
+---@field usageMetadata? table
 
 ---@class GenerateContentCreateData
 ---@field model string
+---@field candidates? table
+---@field contents table
+---@field generationConfig? table
+---@field promptFeedback? table
+---@field safetySettings? table
+---@field tools? table
+---@field usageMetadata? table
 
 ---@class Interaction
 ---@field config? table
 ---@field input string
----@field metadata? table
 ---@field model string
----@field output_text? string
 
 ---@class InteractionCreateData
 ---@field config? table
 ---@field input string
----@field metadata? table
 ---@field model string
----@field output_text? string
 
 ---@class ListModel
 
 ---@class Model
 ---@field description? string
----@field display_name? string
----@field input_token_limit? number
+---@field displayName? string
+---@field inputTokenLimit? number
 ---@field name? string
----@field output_token_limit? number
----@field supported_generation_method? table
+---@field outputTokenLimit? number
+---@field supportedGenerationMethods? table
 ---@field version? string
 
 ---@class ModelLoadMatch
@@ -57,11 +64,11 @@
 
 ---@class ModelListMatch
 ---@field description? string
----@field display_name? string
----@field input_token_limit? number
+---@field displayName? string
+---@field inputTokenLimit? number
 ---@field name? string
----@field output_token_limit? number
----@field supported_generation_method? table
+---@field outputTokenLimit? number
+---@field supportedGenerationMethods? table
 ---@field version? string
 
 local M = {}

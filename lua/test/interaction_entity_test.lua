@@ -41,7 +41,7 @@ describe("InteractionEntity", function()
 
     local interaction_ref01_data_result, err = interaction_ref01_ent:create(interaction_ref01_data, nil)
     assert.is_nil(err)
-    interaction_ref01_data = helpers.to_map(interaction_ref01_data_result)
+    interaction_ref01_data = helpers.to_map(type(interaction_ref01_data_result) == 'table' and interaction_ref01_data_result.data_get and interaction_ref01_data_result:data_get() or interaction_ref01_data_result)
     assert.is_not_nil(interaction_ref01_data)
 
   end)

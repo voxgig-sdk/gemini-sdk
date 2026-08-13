@@ -11,12 +11,12 @@ main: kit: entity: model: {
       type: "`$STRING`"
     }
     {
-      name: "display_name"
+      name: "displayName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "input_token_limit"
+      name: "inputTokenLimit"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,12 +26,12 @@ main: kit: entity: model: {
       type: "`$STRING`"
     }
     {
-      name: "output_token_limit"
+      name: "outputTokenLimit"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "supported_generation_method"
+      name: "supportedGenerationMethods"
       req: false
       type: "`$ARRAY`"
     }
@@ -88,7 +88,7 @@ main: kit: entity: model: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.models`"
           }
         }
       ]

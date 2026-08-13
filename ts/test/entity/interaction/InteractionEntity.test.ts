@@ -62,7 +62,7 @@ describe('InteractionEntity', async () => {
     const interaction_ref01_ent = client.Interaction()
     let interaction_ref01_data = setup.data.new.interaction['interaction_ref01']
 
-    interaction_ref01_data = await interaction_ref01_ent.create(interaction_ref01_data)
+    interaction_ref01_data = (await interaction_ref01_ent.create(interaction_ref01_data)).data()
     assert(null != interaction_ref01_data)
 
 

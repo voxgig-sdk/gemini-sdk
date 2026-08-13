@@ -13,19 +13,19 @@
 # @!attribute [rw] content
 #   @return [Hash]
 #
-# @!attribute [rw] embedding
-#   @return [Hash, nil]
-#
-# @!attribute [rw] task_type
+# @!attribute [rw] taskType
 #   @return [String, nil]
 #
 # @!attribute [rw] title
 #   @return [String, nil]
+#
+# @!attribute [rw] values
+#   @return [Array, nil]
 EmbedContent = Struct.new(
   :content,
-  :embedding,
-  :task_type,
+  :taskType,
   :title,
+  :values,
   keyword_init: true
 )
 
@@ -33,41 +33,57 @@ EmbedContent = Struct.new(
 #
 # @!attribute [rw] model
 #   @return [String]
+#
+# @!attribute [rw] content
+#   @return [Hash]
+#
+# @!attribute [rw] taskType
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] values
+#   @return [Array, nil]
 EmbedContentCreateData = Struct.new(
   :model,
+  :content,
+  :taskType,
+  :title,
+  :values,
   keyword_init: true
 )
 
 # GenerateContent entity data model.
 #
-# @!attribute [rw] candidate
+# @!attribute [rw] candidates
 #   @return [Array, nil]
 #
-# @!attribute [rw] content
+# @!attribute [rw] contents
 #   @return [Array]
 #
-# @!attribute [rw] generation_config
+# @!attribute [rw] generationConfig
 #   @return [Hash, nil]
 #
-# @!attribute [rw] prompt_feedback
+# @!attribute [rw] promptFeedback
 #   @return [Hash, nil]
 #
-# @!attribute [rw] safety_setting
+# @!attribute [rw] safetySettings
 #   @return [Array, nil]
 #
-# @!attribute [rw] tool
+# @!attribute [rw] tools
 #   @return [Array, nil]
 #
-# @!attribute [rw] usage_metadata
+# @!attribute [rw] usageMetadata
 #   @return [Hash, nil]
 GenerateContent = Struct.new(
-  :candidate,
-  :content,
-  :generation_config,
-  :prompt_feedback,
-  :safety_setting,
-  :tool,
-  :usage_metadata,
+  :candidates,
+  :contents,
+  :generationConfig,
+  :promptFeedback,
+  :safetySettings,
+  :tools,
+  :usageMetadata,
   keyword_init: true
 )
 
@@ -75,8 +91,36 @@ GenerateContent = Struct.new(
 #
 # @!attribute [rw] model
 #   @return [String]
+#
+# @!attribute [rw] candidates
+#   @return [Array, nil]
+#
+# @!attribute [rw] contents
+#   @return [Array]
+#
+# @!attribute [rw] generationConfig
+#   @return [Hash, nil]
+#
+# @!attribute [rw] promptFeedback
+#   @return [Hash, nil]
+#
+# @!attribute [rw] safetySettings
+#   @return [Array, nil]
+#
+# @!attribute [rw] tools
+#   @return [Array, nil]
+#
+# @!attribute [rw] usageMetadata
+#   @return [Hash, nil]
 GenerateContentCreateData = Struct.new(
   :model,
+  :candidates,
+  :contents,
+  :generationConfig,
+  :promptFeedback,
+  :safetySettings,
+  :tools,
+  :usageMetadata,
   keyword_init: true
 )
 
@@ -88,20 +132,12 @@ GenerateContentCreateData = Struct.new(
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] metadata
-#   @return [Hash, nil]
-#
 # @!attribute [rw] model
 #   @return [String]
-#
-# @!attribute [rw] output_text
-#   @return [String, nil]
 Interaction = Struct.new(
   :config,
   :input,
-  :metadata,
   :model,
-  :output_text,
   keyword_init: true
 )
 
@@ -113,20 +149,12 @@ Interaction = Struct.new(
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] metadata
-#   @return [Hash, nil]
-#
 # @!attribute [rw] model
 #   @return [String]
-#
-# @!attribute [rw] output_text
-#   @return [String, nil]
 InteractionCreateData = Struct.new(
   :config,
   :input,
-  :metadata,
   :model,
-  :output_text,
   keyword_init: true
 )
 
@@ -139,30 +167,30 @@ end
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] display_name
+# @!attribute [rw] displayName
 #   @return [String, nil]
 #
-# @!attribute [rw] input_token_limit
+# @!attribute [rw] inputTokenLimit
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] output_token_limit
+# @!attribute [rw] outputTokenLimit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] supported_generation_method
+# @!attribute [rw] supportedGenerationMethods
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 Model = Struct.new(
   :description,
-  :display_name,
-  :input_token_limit,
+  :displayName,
+  :inputTokenLimit,
   :name,
-  :output_token_limit,
-  :supported_generation_method,
+  :outputTokenLimit,
+  :supportedGenerationMethods,
   :version,
   keyword_init: true
 )
@@ -181,30 +209,30 @@ ModelLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] display_name
+# @!attribute [rw] displayName
 #   @return [String, nil]
 #
-# @!attribute [rw] input_token_limit
+# @!attribute [rw] inputTokenLimit
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] output_token_limit
+# @!attribute [rw] outputTokenLimit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] supported_generation_method
+# @!attribute [rw] supportedGenerationMethods
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 ModelListMatch = Struct.new(
   :description,
-  :display_name,
-  :input_token_limit,
+  :displayName,
+  :inputTokenLimit,
   :name,
-  :output_token_limit,
-  :supported_generation_method,
+  :outputTokenLimit,
+  :supportedGenerationMethods,
   :version,
   keyword_init: true
 )
