@@ -40,7 +40,7 @@ class GeminiSDK
         $utility = new GeminiUtility();
         $this->_utility = $utility;
 
-        $config = GeminiConfig::make_config();
+        $config = GeminiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

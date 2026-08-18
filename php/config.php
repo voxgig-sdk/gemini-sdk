@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class GeminiConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -38,32 +61,21 @@ class GeminiConfig
         'embed_content' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'content',
               'req' => true,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'taskType',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'title',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'values',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 3,
             ],
           ],
           'name' => 'embed_content',
@@ -73,23 +85,19 @@ class GeminiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'embedding-001',
                         'kind' => 'param',
                         'name' => 'model',
                         'orig' => 'model',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'key',
                         'orig' => 'key',
@@ -115,10 +123,8 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body.embedding`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
@@ -132,53 +138,33 @@ class GeminiConfig
         'generate_content' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'candidates',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'contents',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'generationConfig',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'promptFeedback',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'safetySettings',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'tools',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'usageMetadata',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 6,
             ],
           ],
           'name' => 'generate_content',
@@ -188,23 +174,19 @@ class GeminiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'gemini-2.5-flash',
                         'kind' => 'param',
                         'name' => 'model',
                         'orig' => 'model',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'key',
                         'orig' => 'key',
@@ -230,26 +212,21 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'gemini-3.6-flash',
                         'kind' => 'param',
                         'name' => 'model',
                         'orig' => 'model',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'key',
                         'orig' => 'key',
@@ -275,10 +252,8 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
@@ -292,25 +267,18 @@ class GeminiConfig
         'interaction' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'config',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'input',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'model',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
           ],
           'name' => 'interaction',
@@ -320,7 +288,6 @@ class GeminiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
@@ -333,10 +300,8 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body.metadata`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
@@ -354,53 +319,32 @@ class GeminiConfig
         'model' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'description',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'displayName',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'inputTokenLimit',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'outputTokenLimit',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'supportedGenerationMethods',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'version',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 6,
             ],
           ],
           'name' => 'model',
@@ -410,11 +354,9 @@ class GeminiConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'key',
                         'orig' => 'key',
@@ -422,20 +364,16 @@ class GeminiConfig
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 50,
                         'kind' => 'query',
                         'name' => 'page_size',
                         'orig' => 'page_size',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'page_token',
                         'orig' => 'page_token',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -457,33 +395,27 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body.models`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'gemini-3.6-flash',
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'model',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'key',
                         'orig' => 'key',
@@ -514,10 +446,8 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

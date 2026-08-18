@@ -23,8 +23,8 @@ class GeminiSDK:
         utility = GeminiUtility()
         self._utility = utility
 
-        from gemini_sdk.config import make_config
-        config = make_config()
+        from gemini_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

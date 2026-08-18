@@ -1,6 +1,20 @@
 # Gemini SDK configuration
 
 module GeminiConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -33,32 +47,21 @@ module GeminiConfig
         "embed_content" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "content",
               "req" => true,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "taskType",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "title",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "values",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 3,
             },
           ],
           "name" => "embed_content",
@@ -68,23 +71,19 @@ module GeminiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "embedding-001",
                         "kind" => "param",
                         "name" => "model",
                         "orig" => "model",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "key",
                         "orig" => "key",
@@ -110,10 +109,8 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.embedding`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {
@@ -127,53 +124,33 @@ module GeminiConfig
         "generate_content" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "candidates",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "contents",
               "req" => true,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "generationConfig",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "promptFeedback",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "safetySettings",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "tools",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "usageMetadata",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 6,
             },
           ],
           "name" => "generate_content",
@@ -183,23 +160,19 @@ module GeminiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "gemini-2.5-flash",
                         "kind" => "param",
                         "name" => "model",
                         "orig" => "model",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "key",
                         "orig" => "key",
@@ -225,26 +198,21 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "gemini-3.6-flash",
                         "kind" => "param",
                         "name" => "model",
                         "orig" => "model",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "key",
                         "orig" => "key",
@@ -270,10 +238,8 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {
@@ -287,25 +253,18 @@ module GeminiConfig
         "interaction" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "config",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "input",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "model",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "interaction",
@@ -315,7 +274,6 @@ module GeminiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -328,10 +286,8 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.metadata`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {
@@ -349,53 +305,32 @@ module GeminiConfig
         "model" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "description",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "displayName",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "inputTokenLimit",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "outputTokenLimit",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "supportedGenerationMethods",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "version",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
           ],
           "name" => "model",
@@ -405,11 +340,9 @@ module GeminiConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "key",
                         "orig" => "key",
@@ -417,20 +350,16 @@ module GeminiConfig
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 50,
                         "kind" => "query",
                         "name" => "page_size",
                         "orig" => "page_size",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "page_token",
                         "orig" => "page_token",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -452,33 +381,27 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.models`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "gemini-3.6-flash",
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "model",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "key",
                         "orig" => "key",
@@ -509,10 +432,8 @@ module GeminiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

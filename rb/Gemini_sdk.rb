@@ -28,7 +28,7 @@ class GeminiSDK
     utility = GeminiUtility.new
     @_utility = utility
 
-    config = GeminiConfig.make_config
+    config = GeminiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

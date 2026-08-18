@@ -1,5 +1,8 @@
 -- Gemini SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -32,32 +35,21 @@ local function make_config()
       ["embed_content"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "content",
             ["req"] = true,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "taskType",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "values",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 3,
           },
         },
         ["name"] = "embed_content",
@@ -67,23 +59,19 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "embedding-001",
                       ["kind"] = "param",
                       ["name"] = "model",
                       ["orig"] = "model",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "key",
                       ["orig"] = "key",
@@ -109,10 +97,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.embedding`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {
@@ -126,53 +112,33 @@ local function make_config()
       ["generate_content"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "candidates",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "contents",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "generationConfig",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "promptFeedback",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "safetySettings",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "tools",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "usageMetadata",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 6,
           },
         },
         ["name"] = "generate_content",
@@ -182,23 +148,19 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "gemini-2.5-flash",
                       ["kind"] = "param",
                       ["name"] = "model",
                       ["orig"] = "model",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "key",
                       ["orig"] = "key",
@@ -224,26 +186,21 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "gemini-3.6-flash",
                       ["kind"] = "param",
                       ["name"] = "model",
                       ["orig"] = "model",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "key",
                       ["orig"] = "key",
@@ -269,10 +226,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {
@@ -286,25 +241,18 @@ local function make_config()
       ["interaction"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "config",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "input",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "model",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
         },
         ["name"] = "interaction",
@@ -314,7 +262,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -327,10 +274,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.metadata`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {
@@ -348,53 +293,32 @@ local function make_config()
       ["model"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "displayName",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "inputTokenLimit",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "outputTokenLimit",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "supportedGenerationMethods",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "version",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
         },
         ["name"] = "model",
@@ -404,11 +328,9 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "key",
                       ["orig"] = "key",
@@ -416,20 +338,16 @@ local function make_config()
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = 50,
                       ["kind"] = "query",
                       ["name"] = "page_size",
                       ["orig"] = "page_size",
-                      ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "page_token",
                       ["orig"] = "page_token",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -451,33 +369,27 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.models`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "gemini-3.6-flash",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "model",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "key",
                       ["orig"] = "key",
@@ -508,10 +420,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
