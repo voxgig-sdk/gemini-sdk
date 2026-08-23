@@ -249,9 +249,9 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `taskType` |  |
-| `title` |  |
-| `values` |  |
+| `taskType` | Optional task type for embedding optimization |
+| `title` | Optional title for document embeddings |
+| `values` | Embedding vector values |
 
 Operations: Create.
 
@@ -262,11 +262,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `candidates` |  |
-| `contents` |  |
+| `contents` | Array of content parts for generation |
 | `generationConfig` |  |
 | `promptFeedback` |  |
-| `safetySettings` |  |
-| `tools` |  |
+| `safetySettings` | Safety settings for content filtering |
+| `tools` | Tools available for function calling |
 | `usageMetadata` |  |
 
 Operations: Create.
@@ -277,9 +277,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `config` |  |
-| `input` |  |
-| `model` |  |
+| `config` | Optional configuration parameters for the interaction |
+| `input` | The input prompt or query |
+| `model` | The model to use for the interaction |
 
 Operations: Create.
 
@@ -298,13 +298,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
-| `inputTokenLimit` |  |
-| `name` |  |
-| `outputTokenLimit` |  |
-| `supportedGenerationMethods` |  |
-| `version` |  |
+| `description` | Model description |
+| `displayName` | Human-readable model name |
+| `inputTokenLimit` | Maximum input tokens |
+| `name` | Model resource name |
+| `outputTokenLimit` | Maximum output tokens |
+| `supportedGenerationMethods` | Supported generation methods |
+| `version` | Model version |
 
 Operations: List, Load.
 
@@ -330,9 +330,9 @@ Create an instance: `embed_content = client.EmbedContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `dict` |  |
-| `taskType` | `str` |  |
-| `title` | `str` |  |
-| `values` | `list` |  |
+| `taskType` | `str` | Optional task type for embedding optimization |
+| `title` | `str` | Optional title for document embeddings |
+| `values` | `list` | Embedding vector values |
 
 #### Example: Create
 
@@ -359,11 +359,11 @@ Create an instance: `generate_content = client.GenerateContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `list` |  |
-| `contents` | `list` |  |
+| `contents` | `list` | Array of content parts for generation |
 | `generationConfig` | `dict` |  |
 | `promptFeedback` | `dict` |  |
-| `safetySettings` | `list` |  |
-| `tools` | `list` |  |
+| `safetySettings` | `list` | Safety settings for content filtering |
+| `tools` | `list` | Tools available for function calling |
 | `usageMetadata` | `dict` |  |
 
 #### Example: Create
@@ -390,9 +390,9 @@ Create an instance: `interaction = client.Interaction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `dict` |  |
-| `input` | `str` |  |
-| `model` | `str` |  |
+| `config` | `dict` | Optional configuration parameters for the interaction |
+| `input` | `str` | The input prompt or query |
+| `model` | `str` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -424,13 +424,13 @@ Create an instance: `model = client.Model()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `str` |  |
-| `displayName` | `str` |  |
-| `inputTokenLimit` | `int` |  |
-| `name` | `str` |  |
-| `outputTokenLimit` | `int` |  |
-| `supportedGenerationMethods` | `list` |  |
-| `version` | `str` |  |
+| `description` | `str` | Model description |
+| `displayName` | `str` | Human-readable model name |
+| `inputTokenLimit` | `int` | Maximum input tokens |
+| `name` | `str` | Model resource name |
+| `outputTokenLimit` | `int` | Maximum output tokens |
+| `supportedGenerationMethods` | `list` | Supported generation methods |
+| `version` | `str` | Model version |
 
 #### Example: Load
 

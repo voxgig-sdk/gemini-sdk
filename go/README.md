@@ -6,7 +6,7 @@ The Golang SDK for the Gemini API — an entity-oriented client using standard G
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.EmbedContent(nil)` — each with the same small set of operations (`List`, `Load`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,9 +271,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"content"` |  |
-| `"taskType"` |  |
-| `"title"` |  |
-| `"values"` |  |
+| `"taskType"` | Optional task type for embedding optimization |
+| `"title"` | Optional title for document embeddings |
+| `"values"` | Embedding vector values |
 
 Operations: Create.
 
@@ -284,11 +284,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `"candidates"` |  |
-| `"contents"` |  |
+| `"contents"` | Array of content parts for generation |
 | `"generationConfig"` |  |
 | `"promptFeedback"` |  |
-| `"safetySettings"` |  |
-| `"tools"` |  |
+| `"safetySettings"` | Safety settings for content filtering |
+| `"tools"` | Tools available for function calling |
 | `"usageMetadata"` |  |
 
 Operations: Create.
@@ -299,9 +299,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `"config"` |  |
-| `"input"` |  |
-| `"model"` |  |
+| `"config"` | Optional configuration parameters for the interaction |
+| `"input"` | The input prompt or query |
+| `"model"` | The model to use for the interaction |
 
 Operations: Create.
 
@@ -320,13 +320,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"displayName"` |  |
-| `"inputTokenLimit"` |  |
-| `"name"` |  |
-| `"outputTokenLimit"` |  |
-| `"supportedGenerationMethods"` |  |
-| `"version"` |  |
+| `"description"` | Model description |
+| `"displayName"` | Human-readable model name |
+| `"inputTokenLimit"` | Maximum input tokens |
+| `"name"` | Model resource name |
+| `"outputTokenLimit"` | Maximum output tokens |
+| `"supportedGenerationMethods"` | Supported generation methods |
+| `"version"` | Model version |
 
 Operations: List, Load.
 
@@ -352,9 +352,9 @@ Create an instance: `embedContent := client.EmbedContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `map[string]any` |  |
-| `taskType` | `string` |  |
-| `title` | `string` |  |
-| `values` | `[]any` |  |
+| `taskType` | `string` | Optional task type for embedding optimization |
+| `title` | `string` | Optional title for document embeddings |
+| `values` | `[]any` | Embedding vector values |
 
 #### Example: Create
 
@@ -385,11 +385,11 @@ Create an instance: `generateContent := client.GenerateContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `[]any` |  |
-| `contents` | `[]any` |  |
+| `contents` | `[]any` | Array of content parts for generation |
 | `generationConfig` | `map[string]any` |  |
 | `promptFeedback` | `map[string]any` |  |
-| `safetySettings` | `[]any` |  |
-| `tools` | `[]any` |  |
+| `safetySettings` | `[]any` | Safety settings for content filtering |
+| `tools` | `[]any` | Tools available for function calling |
 | `usageMetadata` | `map[string]any` |  |
 
 #### Example: Create
@@ -420,9 +420,9 @@ Create an instance: `interaction := client.Interaction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `map[string]any` |  |
-| `input` | `string` |  |
-| `model` | `string` |  |
+| `config` | `map[string]any` | Optional configuration parameters for the interaction |
+| `input` | `string` | The input prompt or query |
+| `model` | `string` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -458,13 +458,13 @@ Create an instance: `model := client.Model(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `displayName` | `string` |  |
-| `inputTokenLimit` | `int` |  |
-| `name` | `string` |  |
-| `outputTokenLimit` | `int` |  |
-| `supportedGenerationMethods` | `[]any` |  |
-| `version` | `string` |  |
+| `description` | `string` | Model description |
+| `displayName` | `string` | Human-readable model name |
+| `inputTokenLimit` | `int` | Maximum input tokens |
+| `name` | `string` | Model resource name |
+| `outputTokenLimit` | `int` | Maximum output tokens |
+| `supportedGenerationMethods` | `[]any` | Supported generation methods |
+| `version` | `string` | Model version |
 
 #### Example: Load
 

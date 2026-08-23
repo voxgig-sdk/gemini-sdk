@@ -19,6 +19,9 @@ module GeminiConfig
     {
       "main" => {
         "name" => "Gemini",
+        "slug" => "gemini",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -53,14 +56,17 @@ module GeminiConfig
             },
             {
               "name" => "taskType",
+              "short" => "Optional task type for embedding optimization",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "short" => "Optional title for document embeddings",
               "type" => "`$STRING`",
             },
             {
               "name" => "values",
+              "short" => "Embedding vector values",
               "type" => "`$ARRAY`",
             },
           ],
@@ -130,6 +136,7 @@ module GeminiConfig
             {
               "name" => "contents",
               "req" => true,
+              "short" => "Array of content parts for generation",
               "type" => "`$ARRAY`",
             },
             {
@@ -142,10 +149,12 @@ module GeminiConfig
             },
             {
               "name" => "safetySettings",
+              "short" => "Safety settings for content filtering",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "tools",
+              "short" => "Tools available for function calling",
               "type" => "`$ARRAY`",
             },
             {
@@ -254,16 +263,19 @@ module GeminiConfig
           "fields" => [
             {
               "name" => "config",
+              "short" => "Optional configuration parameters for the interaction",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "The input prompt or query",
               "type" => "`$STRING`",
             },
             {
               "name" => "model",
               "req" => true,
+              "short" => "The model to use for the interaction",
               "type" => "`$STRING`",
             },
           ],
@@ -306,30 +318,37 @@ module GeminiConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Model description",
               "type" => "`$STRING`",
             },
             {
               "name" => "displayName",
+              "short" => "Human-readable model name",
               "type" => "`$STRING`",
             },
             {
               "name" => "inputTokenLimit",
+              "short" => "Maximum input tokens",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "short" => "Model resource name",
               "type" => "`$STRING`",
             },
             {
               "name" => "outputTokenLimit",
+              "short" => "Maximum output tokens",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "supportedGenerationMethods",
+              "short" => "Supported generation methods",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "version",
+              "short" => "Model version",
               "type" => "`$STRING`",
             },
           ],

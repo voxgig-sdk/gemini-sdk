@@ -255,9 +255,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `taskType` |  |
-| `title` |  |
-| `values` |  |
+| `taskType` | Optional task type for embedding optimization |
+| `title` | Optional title for document embeddings |
+| `values` | Embedding vector values |
 
 Operations: Create.
 
@@ -268,11 +268,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `candidates` |  |
-| `contents` |  |
+| `contents` | Array of content parts for generation |
 | `generationConfig` |  |
 | `promptFeedback` |  |
-| `safetySettings` |  |
-| `tools` |  |
+| `safetySettings` | Safety settings for content filtering |
+| `tools` | Tools available for function calling |
 | `usageMetadata` |  |
 
 Operations: Create.
@@ -283,9 +283,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `config` |  |
-| `input` |  |
-| `model` |  |
+| `config` | Optional configuration parameters for the interaction |
+| `input` | The input prompt or query |
+| `model` | The model to use for the interaction |
 
 Operations: Create.
 
@@ -304,13 +304,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
-| `inputTokenLimit` |  |
-| `name` |  |
-| `outputTokenLimit` |  |
-| `supportedGenerationMethods` |  |
-| `version` |  |
+| `description` | Model description |
+| `displayName` | Human-readable model name |
+| `inputTokenLimit` | Maximum input tokens |
+| `name` | Model resource name |
+| `outputTokenLimit` | Maximum output tokens |
+| `supportedGenerationMethods` | Supported generation methods |
+| `version` | Model version |
 
 Operations: List, Load.
 
@@ -336,9 +336,9 @@ Create an instance: `$embed_content = $client->EmbedContent();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `array` |  |
-| `taskType` | `string` |  |
-| `title` | `string` |  |
-| `values` | `array` |  |
+| `taskType` | `string` | Optional task type for embedding optimization |
+| `title` | `string` | Optional title for document embeddings |
+| `values` | `array` | Embedding vector values |
 
 #### Example: Create
 
@@ -365,11 +365,11 @@ Create an instance: `$generate_content = $client->GenerateContent();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `array` |  |
-| `contents` | `array` |  |
+| `contents` | `array` | Array of content parts for generation |
 | `generationConfig` | `array` |  |
 | `promptFeedback` | `array` |  |
-| `safetySettings` | `array` |  |
-| `tools` | `array` |  |
+| `safetySettings` | `array` | Safety settings for content filtering |
+| `tools` | `array` | Tools available for function calling |
 | `usageMetadata` | `array` |  |
 
 #### Example: Create
@@ -396,9 +396,9 @@ Create an instance: `$interaction = $client->Interaction();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `array` |  |
-| `input` | `string` |  |
-| `model` | `string` |  |
+| `config` | `array` | Optional configuration parameters for the interaction |
+| `input` | `string` | The input prompt or query |
+| `model` | `string` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -430,13 +430,13 @@ Create an instance: `$model = $client->Model();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `displayName` | `string` |  |
-| `inputTokenLimit` | `int` |  |
-| `name` | `string` |  |
-| `outputTokenLimit` | `int` |  |
-| `supportedGenerationMethods` | `array` |  |
-| `version` | `string` |  |
+| `description` | `string` | Model description |
+| `displayName` | `string` | Human-readable model name |
+| `inputTokenLimit` | `int` | Maximum input tokens |
+| `name` | `string` | Model resource name |
+| `outputTokenLimit` | `int` | Maximum output tokens |
+| `supportedGenerationMethods` | `array` | Supported generation methods |
+| `version` | `string` | Model version |
 
 #### Example: Load
 

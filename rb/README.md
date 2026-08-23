@@ -245,9 +245,9 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `taskType` |  |
-| `title` |  |
-| `values` |  |
+| `taskType` | Optional task type for embedding optimization |
+| `title` | Optional title for document embeddings |
+| `values` | Embedding vector values |
 
 Operations: Create.
 
@@ -258,11 +258,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `candidates` |  |
-| `contents` |  |
+| `contents` | Array of content parts for generation |
 | `generationConfig` |  |
 | `promptFeedback` |  |
-| `safetySettings` |  |
-| `tools` |  |
+| `safetySettings` | Safety settings for content filtering |
+| `tools` | Tools available for function calling |
 | `usageMetadata` |  |
 
 Operations: Create.
@@ -273,9 +273,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `config` |  |
-| `input` |  |
-| `model` |  |
+| `config` | Optional configuration parameters for the interaction |
+| `input` | The input prompt or query |
+| `model` | The model to use for the interaction |
 
 Operations: Create.
 
@@ -294,13 +294,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
-| `inputTokenLimit` |  |
-| `name` |  |
-| `outputTokenLimit` |  |
-| `supportedGenerationMethods` |  |
-| `version` |  |
+| `description` | Model description |
+| `displayName` | Human-readable model name |
+| `inputTokenLimit` | Maximum input tokens |
+| `name` | Model resource name |
+| `outputTokenLimit` | Maximum output tokens |
+| `supportedGenerationMethods` | Supported generation methods |
+| `version` | Model version |
 
 Operations: List, Load.
 
@@ -326,9 +326,9 @@ Create an instance: `embed_content = client.EmbedContent`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `Hash` |  |
-| `taskType` | `String` |  |
-| `title` | `String` |  |
-| `values` | `Array` |  |
+| `taskType` | `String` | Optional task type for embedding optimization |
+| `title` | `String` | Optional title for document embeddings |
+| `values` | `Array` | Embedding vector values |
 
 #### Example: Create
 
@@ -355,11 +355,11 @@ Create an instance: `generate_content = client.GenerateContent`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `Array` |  |
-| `contents` | `Array` |  |
+| `contents` | `Array` | Array of content parts for generation |
 | `generationConfig` | `Hash` |  |
 | `promptFeedback` | `Hash` |  |
-| `safetySettings` | `Array` |  |
-| `tools` | `Array` |  |
+| `safetySettings` | `Array` | Safety settings for content filtering |
+| `tools` | `Array` | Tools available for function calling |
 | `usageMetadata` | `Hash` |  |
 
 #### Example: Create
@@ -386,9 +386,9 @@ Create an instance: `interaction = client.Interaction`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `Hash` |  |
-| `input` | `String` |  |
-| `model` | `String` |  |
+| `config` | `Hash` | Optional configuration parameters for the interaction |
+| `input` | `String` | The input prompt or query |
+| `model` | `String` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -420,13 +420,13 @@ Create an instance: `model = client.Model`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `displayName` | `String` |  |
-| `inputTokenLimit` | `Integer` |  |
-| `name` | `String` |  |
-| `outputTokenLimit` | `Integer` |  |
-| `supportedGenerationMethods` | `Array` |  |
-| `version` | `String` |  |
+| `description` | `String` | Model description |
+| `displayName` | `String` | Human-readable model name |
+| `inputTokenLimit` | `Integer` | Maximum input tokens |
+| `name` | `String` | Model resource name |
+| `outputTokenLimit` | `Integer` | Maximum output tokens |
+| `supportedGenerationMethods` | `Array` | Supported generation methods |
+| `version` | `String` | Model version |
 
 #### Example: Load
 

@@ -166,9 +166,9 @@ const embed_content = client.EmbedContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `Record<string, any>` | Yes |  |
-| `taskType` | `string` | No |  |
-| `title` | `string` | No |  |
-| `values` | `any[]` | No |  |
+| `taskType` | `string` | No | Optional task type for embedding optimization |
+| `title` | `string` | No | Optional title for document embeddings |
+| `values` | `any[]` | No | Embedding vector values |
 
 ### Operations
 
@@ -222,11 +222,11 @@ const generate_content = client.GenerateContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `candidates` | `any[]` | No |  |
-| `contents` | `any[]` | Yes |  |
+| `contents` | `any[]` | Yes | Array of content parts for generation |
 | `generationConfig` | `Record<string, any>` | No |  |
 | `promptFeedback` | `Record<string, any>` | No |  |
-| `safetySettings` | `any[]` | No |  |
-| `tools` | `any[]` | No |  |
+| `safetySettings` | `any[]` | No | Safety settings for content filtering |
+| `tools` | `any[]` | No | Tools available for function calling |
 | `usageMetadata` | `Record<string, any>` | No |  |
 
 ### Operations
@@ -280,9 +280,9 @@ const interaction = client.Interaction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config` | `Record<string, any>` | No |  |
-| `input` | `string` | Yes |  |
-| `model` | `string` | Yes |  |
+| `config` | `Record<string, any>` | No | Optional configuration parameters for the interaction |
+| `input` | `string` | Yes | The input prompt or query |
+| `model` | `string` | Yes | The model to use for the interaction |
 
 ### Operations
 
@@ -369,13 +369,13 @@ const model = client.Model()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | No |  |
-| `inputTokenLimit` | `number` | No |  |
-| `name` | `string` | No |  |
-| `outputTokenLimit` | `number` | No |  |
-| `supportedGenerationMethods` | `any[]` | No |  |
-| `version` | `string` | No |  |
+| `description` | `string` | No | Model description |
+| `displayName` | `string` | No | Human-readable model name |
+| `inputTokenLimit` | `number` | No | Maximum input tokens |
+| `name` | `string` | No | Model resource name |
+| `outputTokenLimit` | `number` | No | Maximum output tokens |
+| `supportedGenerationMethods` | `any[]` | No | Supported generation methods |
+| `version` | `string` | No | Model version |
 
 ### Operations
 

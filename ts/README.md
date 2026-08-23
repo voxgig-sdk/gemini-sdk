@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -298,9 +298,9 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `taskType` |  |
-| `title` |  |
-| `values` |  |
+| `taskType` | Optional task type for embedding optimization |
+| `title` | Optional title for document embeddings |
+| `values` | Embedding vector values |
 
 Operations: create.
 
@@ -311,11 +311,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `candidates` |  |
-| `contents` |  |
+| `contents` | Array of content parts for generation |
 | `generationConfig` |  |
 | `promptFeedback` |  |
-| `safetySettings` |  |
-| `tools` |  |
+| `safetySettings` | Safety settings for content filtering |
+| `tools` | Tools available for function calling |
 | `usageMetadata` |  |
 
 Operations: create.
@@ -326,9 +326,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `config` |  |
-| `input` |  |
-| `model` |  |
+| `config` | Optional configuration parameters for the interaction |
+| `input` | The input prompt or query |
+| `model` | The model to use for the interaction |
 
 Operations: create.
 
@@ -347,13 +347,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
-| `inputTokenLimit` |  |
-| `name` |  |
-| `outputTokenLimit` |  |
-| `supportedGenerationMethods` |  |
-| `version` |  |
+| `description` | Model description |
+| `displayName` | Human-readable model name |
+| `inputTokenLimit` | Maximum input tokens |
+| `name` | Model resource name |
+| `outputTokenLimit` | Maximum output tokens |
+| `supportedGenerationMethods` | Supported generation methods |
+| `version` | Model version |
 
 Operations: list, load.
 
@@ -379,9 +379,9 @@ Create an instance: `const embed_content = client.EmbedContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `Record<string, any>` |  |
-| `taskType` | `string` |  |
-| `title` | `string` |  |
-| `values` | `any[]` |  |
+| `taskType` | `string` | Optional task type for embedding optimization |
+| `title` | `string` | Optional title for document embeddings |
+| `values` | `any[]` | Embedding vector values |
 
 #### Example: Create
 
@@ -408,11 +408,11 @@ Create an instance: `const generate_content = client.GenerateContent()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `any[]` |  |
-| `contents` | `any[]` |  |
+| `contents` | `any[]` | Array of content parts for generation |
 | `generationConfig` | `Record<string, any>` |  |
 | `promptFeedback` | `Record<string, any>` |  |
-| `safetySettings` | `any[]` |  |
-| `tools` | `any[]` |  |
+| `safetySettings` | `any[]` | Safety settings for content filtering |
+| `tools` | `any[]` | Tools available for function calling |
 | `usageMetadata` | `Record<string, any>` |  |
 
 #### Example: Create
@@ -439,9 +439,9 @@ Create an instance: `const interaction = client.Interaction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `Record<string, any>` |  |
-| `input` | `string` |  |
-| `model` | `string` |  |
+| `config` | `Record<string, any>` | Optional configuration parameters for the interaction |
+| `input` | `string` | The input prompt or query |
+| `model` | `string` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -473,13 +473,13 @@ Create an instance: `const model = client.Model()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `displayName` | `string` |  |
-| `inputTokenLimit` | `number` |  |
-| `name` | `string` |  |
-| `outputTokenLimit` | `number` |  |
-| `supportedGenerationMethods` | `any[]` |  |
-| `version` | `string` |  |
+| `description` | `string` | Model description |
+| `displayName` | `string` | Human-readable model name |
+| `inputTokenLimit` | `number` | Maximum input tokens |
+| `name` | `string` | Model resource name |
+| `outputTokenLimit` | `number` | Maximum output tokens |
+| `supportedGenerationMethods` | `any[]` | Supported generation methods |
+| `version` | `string` | Model version |
 
 #### Example: Load
 

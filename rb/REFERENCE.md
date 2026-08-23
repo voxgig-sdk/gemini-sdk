@@ -111,9 +111,9 @@ embed_content = client.EmbedContent
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `Hash` | Yes |  |
-| `taskType` | `String` | No |  |
-| `title` | `String` | No |  |
-| `values` | `Array` | No |  |
+| `taskType` | `String` | No | Optional task type for embedding optimization |
+| `title` | `String` | No | Optional title for document embeddings |
+| `values` | `Array` | No | Embedding vector values |
 
 ### Operations
 
@@ -169,11 +169,11 @@ generate_content = client.GenerateContent
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `candidates` | `Array` | No |  |
-| `contents` | `Array` | Yes |  |
+| `contents` | `Array` | Yes | Array of content parts for generation |
 | `generationConfig` | `Hash` | No |  |
 | `promptFeedback` | `Hash` | No |  |
-| `safetySettings` | `Array` | No |  |
-| `tools` | `Array` | No |  |
+| `safetySettings` | `Array` | No | Safety settings for content filtering |
+| `tools` | `Array` | No | Tools available for function calling |
 | `usageMetadata` | `Hash` | No |  |
 
 ### Operations
@@ -229,9 +229,9 @@ interaction = client.Interaction
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config` | `Hash` | No |  |
-| `input` | `String` | Yes |  |
-| `model` | `String` | Yes |  |
+| `config` | `Hash` | No | Optional configuration parameters for the interaction |
+| `input` | `String` | Yes | The input prompt or query |
+| `model` | `String` | Yes | The model to use for the interaction |
 
 ### Operations
 
@@ -322,13 +322,13 @@ model = client.Model
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `displayName` | `String` | No |  |
-| `inputTokenLimit` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `outputTokenLimit` | `Integer` | No |  |
-| `supportedGenerationMethods` | `Array` | No |  |
-| `version` | `String` | No |  |
+| `description` | `String` | No | Model description |
+| `displayName` | `String` | No | Human-readable model name |
+| `inputTokenLimit` | `Integer` | No | Maximum input tokens |
+| `name` | `String` | No | Model resource name |
+| `outputTokenLimit` | `Integer` | No | Maximum output tokens |
+| `supportedGenerationMethods` | `Array` | No | Supported generation methods |
+| `version` | `String` | No | Model version |
 
 ### Operations
 

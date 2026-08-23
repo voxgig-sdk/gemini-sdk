@@ -105,9 +105,9 @@ embed_content = client.EmbedContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `dict` | Yes |  |
-| `taskType` | `str` | No |  |
-| `title` | `str` | No |  |
-| `values` | `list` | No |  |
+| `taskType` | `str` | No | Optional task type for embedding optimization |
+| `title` | `str` | No | Optional title for document embeddings |
+| `values` | `list` | No | Embedding vector values |
 
 ### Operations
 
@@ -162,11 +162,11 @@ generate_content = client.GenerateContent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `candidates` | `list` | No |  |
-| `contents` | `list` | Yes |  |
+| `contents` | `list` | Yes | Array of content parts for generation |
 | `generationConfig` | `dict` | No |  |
 | `promptFeedback` | `dict` | No |  |
-| `safetySettings` | `list` | No |  |
-| `tools` | `list` | No |  |
+| `safetySettings` | `list` | No | Safety settings for content filtering |
+| `tools` | `list` | No | Tools available for function calling |
 | `usageMetadata` | `dict` | No |  |
 
 ### Operations
@@ -221,9 +221,9 @@ interaction = client.Interaction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config` | `dict` | No |  |
-| `input` | `str` | Yes |  |
-| `model` | `str` | Yes |  |
+| `config` | `dict` | No | Optional configuration parameters for the interaction |
+| `input` | `str` | Yes | The input prompt or query |
+| `model` | `str` | Yes | The model to use for the interaction |
 
 ### Operations
 
@@ -312,13 +312,13 @@ model = client.Model()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `displayName` | `str` | No |  |
-| `inputTokenLimit` | `int` | No |  |
-| `name` | `str` | No |  |
-| `outputTokenLimit` | `int` | No |  |
-| `supportedGenerationMethods` | `list` | No |  |
-| `version` | `str` | No |  |
+| `description` | `str` | No | Model description |
+| `displayName` | `str` | No | Human-readable model name |
+| `inputTokenLimit` | `int` | No | Maximum input tokens |
+| `name` | `str` | No | Model resource name |
+| `outputTokenLimit` | `int` | No | Maximum output tokens |
+| `supportedGenerationMethods` | `list` | No | Supported generation methods |
+| `version` | `str` | No | Model version |
 
 ### Operations
 

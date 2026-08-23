@@ -108,9 +108,9 @@ local embed_content = client:EmbedContent(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `table` | Yes |  |
-| `taskType` | `string` | No |  |
-| `title` | `string` | No |  |
-| `values` | `table` | No |  |
+| `taskType` | `string` | No | Optional task type for embedding optimization |
+| `title` | `string` | No | Optional title for document embeddings |
+| `values` | `table` | No | Embedding vector values |
 
 ### Operations
 
@@ -166,11 +166,11 @@ local generate_content = client:GenerateContent(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `candidates` | `table` | No |  |
-| `contents` | `table` | Yes |  |
+| `contents` | `table` | Yes | Array of content parts for generation |
 | `generationConfig` | `table` | No |  |
 | `promptFeedback` | `table` | No |  |
-| `safetySettings` | `table` | No |  |
-| `tools` | `table` | No |  |
+| `safetySettings` | `table` | No | Safety settings for content filtering |
+| `tools` | `table` | No | Tools available for function calling |
 | `usageMetadata` | `table` | No |  |
 
 ### Operations
@@ -226,9 +226,9 @@ local interaction = client:Interaction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config` | `table` | No |  |
-| `input` | `string` | Yes |  |
-| `model` | `string` | Yes |  |
+| `config` | `table` | No | Optional configuration parameters for the interaction |
+| `input` | `string` | Yes | The input prompt or query |
+| `model` | `string` | Yes | The model to use for the interaction |
 
 ### Operations
 
@@ -319,13 +319,13 @@ local model = client:Model(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | No |  |
-| `inputTokenLimit` | `number` | No |  |
-| `name` | `string` | No |  |
-| `outputTokenLimit` | `number` | No |  |
-| `supportedGenerationMethods` | `table` | No |  |
-| `version` | `string` | No |  |
+| `description` | `string` | No | Model description |
+| `displayName` | `string` | No | Human-readable model name |
+| `inputTokenLimit` | `number` | No | Maximum input tokens |
+| `name` | `string` | No | Model resource name |
+| `outputTokenLimit` | `number` | No | Maximum output tokens |
+| `supportedGenerationMethods` | `table` | No | Supported generation methods |
+| `version` | `string` | No | Model version |
 
 ### Operations
 

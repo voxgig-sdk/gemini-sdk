@@ -110,9 +110,9 @@ $embed_content = $client->EmbedContent();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `content` | `array` | Yes |  |
-| `taskType` | `string` | No |  |
-| `title` | `string` | No |  |
-| `values` | `array` | No |  |
+| `taskType` | `string` | No | Optional task type for embedding optimization |
+| `title` | `string` | No | Optional title for document embeddings |
+| `values` | `array` | No | Embedding vector values |
 
 ### Operations
 
@@ -168,11 +168,11 @@ $generate_content = $client->GenerateContent();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `candidates` | `array` | No |  |
-| `contents` | `array` | Yes |  |
+| `contents` | `array` | Yes | Array of content parts for generation |
 | `generationConfig` | `array` | No |  |
 | `promptFeedback` | `array` | No |  |
-| `safetySettings` | `array` | No |  |
-| `tools` | `array` | No |  |
+| `safetySettings` | `array` | No | Safety settings for content filtering |
+| `tools` | `array` | No | Tools available for function calling |
 | `usageMetadata` | `array` | No |  |
 
 ### Operations
@@ -228,9 +228,9 @@ $interaction = $client->Interaction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config` | `array` | No |  |
-| `input` | `string` | Yes |  |
-| `model` | `string` | Yes |  |
+| `config` | `array` | No | Optional configuration parameters for the interaction |
+| `input` | `string` | Yes | The input prompt or query |
+| `model` | `string` | Yes | The model to use for the interaction |
 
 ### Operations
 
@@ -321,13 +321,13 @@ $model = $client->Model();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `displayName` | `string` | No |  |
-| `inputTokenLimit` | `int` | No |  |
-| `name` | `string` | No |  |
-| `outputTokenLimit` | `int` | No |  |
-| `supportedGenerationMethods` | `array` | No |  |
-| `version` | `string` | No |  |
+| `description` | `string` | No | Model description |
+| `displayName` | `string` | No | Human-readable model name |
+| `inputTokenLimit` | `int` | No | Maximum input tokens |
+| `name` | `string` | No | Model resource name |
+| `outputTokenLimit` | `int` | No | Maximum output tokens |
+| `supportedGenerationMethods` | `array` | No | Supported generation methods |
+| `version` | `string` | No | Model version |
 
 ### Operations
 

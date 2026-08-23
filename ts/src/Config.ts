@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Gemini',
+        slug: "gemini",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -77,14 +88,17 @@ class Config {
         },
         {
           "name": "taskType",
+          "short": "Optional task type for embedding optimization",
           "type": "`$STRING`"
         },
         {
           "name": "title",
+          "short": "Optional title for document embeddings",
           "type": "`$STRING`"
         },
         {
           "name": "values",
+          "short": "Embedding vector values",
           "type": "`$ARRAY`"
         }
       ],
@@ -154,6 +168,7 @@ class Config {
         {
           "name": "contents",
           "req": true,
+          "short": "Array of content parts for generation",
           "type": "`$ARRAY`"
         },
         {
@@ -166,10 +181,12 @@ class Config {
         },
         {
           "name": "safetySettings",
+          "short": "Safety settings for content filtering",
           "type": "`$ARRAY`"
         },
         {
           "name": "tools",
+          "short": "Tools available for function calling",
           "type": "`$ARRAY`"
         },
         {
@@ -278,16 +295,19 @@ class Config {
       "fields": [
         {
           "name": "config",
+          "short": "Optional configuration parameters for the interaction",
           "type": "`$OBJECT`"
         },
         {
           "name": "input",
           "req": true,
+          "short": "The input prompt or query",
           "type": "`$STRING`"
         },
         {
           "name": "model",
           "req": true,
+          "short": "The model to use for the interaction",
           "type": "`$STRING`"
         }
       ],
@@ -330,30 +350,37 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Model description",
           "type": "`$STRING`"
         },
         {
           "name": "displayName",
+          "short": "Human-readable model name",
           "type": "`$STRING`"
         },
         {
           "name": "inputTokenLimit",
+          "short": "Maximum input tokens",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Model resource name",
           "type": "`$STRING`"
         },
         {
           "name": "outputTokenLimit",
+          "short": "Maximum output tokens",
           "type": "`$INTEGER`"
         },
         {
           "name": "supportedGenerationMethods",
+          "short": "Supported generation methods",
           "type": "`$ARRAY`"
         },
         {
           "name": "version",
+          "short": "Model version",
           "type": "`$STRING`"
         }
       ],

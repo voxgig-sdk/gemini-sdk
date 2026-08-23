@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Gemini",
+            "slug": "gemini",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -62,14 +65,17 @@ def make_config():
           },
           {
             "name": "taskType",
+            "short": "Optional task type for embedding optimization",
             "type": "`$STRING`",
           },
           {
             "name": "title",
+            "short": "Optional title for document embeddings",
             "type": "`$STRING`",
           },
           {
             "name": "values",
+            "short": "Embedding vector values",
             "type": "`$ARRAY`",
           },
         ],
@@ -139,6 +145,7 @@ def make_config():
           {
             "name": "contents",
             "req": True,
+            "short": "Array of content parts for generation",
             "type": "`$ARRAY`",
           },
           {
@@ -151,10 +158,12 @@ def make_config():
           },
           {
             "name": "safetySettings",
+            "short": "Safety settings for content filtering",
             "type": "`$ARRAY`",
           },
           {
             "name": "tools",
+            "short": "Tools available for function calling",
             "type": "`$ARRAY`",
           },
           {
@@ -263,16 +272,19 @@ def make_config():
         "fields": [
           {
             "name": "config",
+            "short": "Optional configuration parameters for the interaction",
             "type": "`$OBJECT`",
           },
           {
             "name": "input",
             "req": True,
+            "short": "The input prompt or query",
             "type": "`$STRING`",
           },
           {
             "name": "model",
             "req": True,
+            "short": "The model to use for the interaction",
             "type": "`$STRING`",
           },
         ],
@@ -315,30 +327,37 @@ def make_config():
         "fields": [
           {
             "name": "description",
+            "short": "Model description",
             "type": "`$STRING`",
           },
           {
             "name": "displayName",
+            "short": "Human-readable model name",
             "type": "`$STRING`",
           },
           {
             "name": "inputTokenLimit",
+            "short": "Maximum input tokens",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "Model resource name",
             "type": "`$STRING`",
           },
           {
             "name": "outputTokenLimit",
+            "short": "Maximum output tokens",
             "type": "`$INTEGER`",
           },
           {
             "name": "supportedGenerationMethods",
+            "short": "Supported generation methods",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
+            "short": "Model version",
             "type": "`$STRING`",
           },
         ],

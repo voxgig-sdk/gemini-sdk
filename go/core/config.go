@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Gemini",
+			"slug": "gemini",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -45,14 +48,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "taskType",
+						"short": "Optional task type for embedding optimization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Optional title for document embeddings",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "values",
+						"short": "Embedding vector values",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -122,6 +128,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "contents",
 						"req": true,
+						"short": "Array of content parts for generation",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -134,10 +141,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "safetySettings",
+						"short": "Safety settings for content filtering",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "tools",
+						"short": "Tools available for function calling",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -246,16 +255,19 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "config",
+						"short": "Optional configuration parameters for the interaction",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "The input prompt or query",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "model",
 						"req": true,
+						"short": "The model to use for the interaction",
 						"type": "`$STRING`",
 					},
 				},
@@ -298,30 +310,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Model description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "displayName",
+						"short": "Human-readable model name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inputTokenLimit",
+						"short": "Maximum input tokens",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Model resource name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "outputTokenLimit",
+						"short": "Maximum output tokens",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "supportedGenerationMethods",
+						"short": "Supported generation methods",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "Model version",
 						"type": "`$STRING`",
 					},
 				},

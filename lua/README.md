@@ -238,9 +238,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `content` |  |
-| `taskType` |  |
-| `title` |  |
-| `values` |  |
+| `taskType` | Optional task type for embedding optimization |
+| `title` | Optional title for document embeddings |
+| `values` | Embedding vector values |
 
 Operations: Create.
 
@@ -251,11 +251,11 @@ API path: `/models/{model}:embedContent`
 | Field | Description |
 | --- | --- |
 | `candidates` |  |
-| `contents` |  |
+| `contents` | Array of content parts for generation |
 | `generationConfig` |  |
 | `promptFeedback` |  |
-| `safetySettings` |  |
-| `tools` |  |
+| `safetySettings` | Safety settings for content filtering |
+| `tools` | Tools available for function calling |
 | `usageMetadata` |  |
 
 Operations: Create.
@@ -266,9 +266,9 @@ API path: `/models/{model}:generateContent`
 
 | Field | Description |
 | --- | --- |
-| `config` |  |
-| `input` |  |
-| `model` |  |
+| `config` | Optional configuration parameters for the interaction |
+| `input` | The input prompt or query |
+| `model` | The model to use for the interaction |
 
 Operations: Create.
 
@@ -287,13 +287,13 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `displayName` |  |
-| `inputTokenLimit` |  |
-| `name` |  |
-| `outputTokenLimit` |  |
-| `supportedGenerationMethods` |  |
-| `version` |  |
+| `description` | Model description |
+| `displayName` | Human-readable model name |
+| `inputTokenLimit` | Maximum input tokens |
+| `name` | Model resource name |
+| `outputTokenLimit` | Maximum output tokens |
+| `supportedGenerationMethods` | Supported generation methods |
+| `version` | Model version |
 
 Operations: List, Load.
 
@@ -319,9 +319,9 @@ Create an instance: `local embed_content = client:EmbedContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `content` | `table` |  |
-| `taskType` | `string` |  |
-| `title` | `string` |  |
-| `values` | `table` |  |
+| `taskType` | `string` | Optional task type for embedding optimization |
+| `title` | `string` | Optional title for document embeddings |
+| `values` | `table` | Embedding vector values |
 
 #### Example: Create
 
@@ -348,11 +348,11 @@ Create an instance: `local generate_content = client:GenerateContent(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `candidates` | `table` |  |
-| `contents` | `table` |  |
+| `contents` | `table` | Array of content parts for generation |
 | `generationConfig` | `table` |  |
 | `promptFeedback` | `table` |  |
-| `safetySettings` | `table` |  |
-| `tools` | `table` |  |
+| `safetySettings` | `table` | Safety settings for content filtering |
+| `tools` | `table` | Tools available for function calling |
 | `usageMetadata` | `table` |  |
 
 #### Example: Create
@@ -379,9 +379,9 @@ Create an instance: `local interaction = client:Interaction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config` | `table` |  |
-| `input` | `string` |  |
-| `model` | `string` |  |
+| `config` | `table` | Optional configuration parameters for the interaction |
+| `input` | `string` | The input prompt or query |
+| `model` | `string` | The model to use for the interaction |
 
 #### Example: Create
 
@@ -413,13 +413,13 @@ Create an instance: `local model = client:Model(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `displayName` | `string` |  |
-| `inputTokenLimit` | `number` |  |
-| `name` | `string` |  |
-| `outputTokenLimit` | `number` |  |
-| `supportedGenerationMethods` | `table` |  |
-| `version` | `string` |  |
+| `description` | `string` | Model description |
+| `displayName` | `string` | Human-readable model name |
+| `inputTokenLimit` | `number` | Maximum input tokens |
+| `name` | `string` | Model resource name |
+| `outputTokenLimit` | `number` | Maximum output tokens |
+| `supportedGenerationMethods` | `table` | Supported generation methods |
+| `version` | `string` | Model version |
 
 #### Example: Load
 

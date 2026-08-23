@@ -1,0 +1,50 @@
+# Entity: interaction
+
+main: kit: entity: interaction: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "config"
+      req: false
+      short: "Optional configuration parameters for the interaction"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "input"
+      req: true
+      short: "The input prompt or query"
+      type: "`$STRING`"
+    }
+    {
+      name: "model"
+      req: true
+      short: "The model to use for the interaction"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "interaction"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/interactions"
+          parts: [
+            "interactions"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.metadata`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

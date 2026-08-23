@@ -42,18 +42,21 @@
               "active": true,
               "name": "taskType",
               "req": false,
+              "short": "Optional task type for embedding optimization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Optional title for document embeddings",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "values",
               "req": false,
+              "short": "Embedding vector values",
               "type": "`$ARRAY`"
             }
           ],
@@ -133,6 +136,7 @@
               "active": true,
               "name": "contents",
               "req": true,
+              "short": "Array of content parts for generation",
               "type": "`$ARRAY`"
             },
             {
@@ -151,12 +155,14 @@
               "active": true,
               "name": "safetySettings",
               "req": false,
+              "short": "Safety settings for content filtering",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "tools",
               "req": false,
+              "short": "Tools available for function calling",
               "type": "`$ARRAY`"
             },
             {
@@ -279,18 +285,21 @@
               "active": true,
               "name": "config",
               "req": false,
+              "short": "Optional configuration parameters for the interaction",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "The input prompt or query",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "model",
               "req": true,
+              "short": "The model to use for the interaction",
               "type": "`$STRING`"
             }
           ],
@@ -344,42 +353,49 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Model description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "displayName",
               "req": false,
+              "short": "Human-readable model name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "inputTokenLimit",
               "req": false,
+              "short": "Maximum input tokens",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Model resource name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "outputTokenLimit",
               "req": false,
+              "short": "Maximum output tokens",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "supportedGenerationMethods",
               "req": false,
+              "short": "Supported generation methods",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "Model version",
               "type": "`$STRING`"
             }
           ],
