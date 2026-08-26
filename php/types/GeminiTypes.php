@@ -82,6 +82,7 @@ class Model
 {
     public ?string $description = null;
     public ?string $displayName = null;
+    public ?string $id = null;
     public ?int $inputTokenLimit = null;
     public ?string $name = null;
     public ?int $outputTokenLimit = null;
@@ -100,6 +101,7 @@ class ModelListMatch
 {
     public ?string $description = null;
     public ?string $displayName = null;
+    public ?string $id = null;
     public ?int $inputTokenLimit = null;
     public ?string $name = null;
     public ?int $outputTokenLimit = null;

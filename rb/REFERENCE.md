@@ -324,6 +324,7 @@ model = client.Model
 | --- | --- | --- | --- |
 | `description` | `String` | No | Model description |
 | `displayName` | `String` | No | Human-readable model name |
+| `id` | `String` | No |  |
 | `inputTokenLimit` | `Integer` | No | Maximum input tokens |
 | `name` | `String` | No | Model resource name |
 | `outputTokenLimit` | `Integer` | No | Maximum output tokens |

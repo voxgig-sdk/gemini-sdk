@@ -42,6 +42,7 @@ class GeminiConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -338,6 +339,10 @@ class GeminiConfig
             [
               'name' => 'displayName',
               'short' => 'Human-readable model name',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

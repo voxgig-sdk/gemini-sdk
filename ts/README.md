@@ -145,7 +145,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -349,6 +349,7 @@ API path: ``
 | --- | --- |
 | `description` | Model description |
 | `displayName` | Human-readable model name |
+| `id` |  |
 | `inputTokenLimit` | Maximum input tokens |
 | `name` | Model resource name |
 | `outputTokenLimit` | Maximum output tokens |
@@ -475,6 +476,7 @@ Create an instance: `const model = client.Model()`
 | --- | --- | --- |
 | `description` | `string` | Model description |
 | `displayName` | `string` | Human-readable model name |
+| `id` | `string` |  |
 | `inputTokenLimit` | `number` | Maximum input tokens |
 | `name` | `string` | Model resource name |
 | `outputTokenLimit` | `number` | Maximum output tokens |

@@ -296,6 +296,7 @@ API path: ``
 | --- | --- |
 | `description` | Model description |
 | `displayName` | Human-readable model name |
+| `id` |  |
 | `inputTokenLimit` | Maximum input tokens |
 | `name` | Model resource name |
 | `outputTokenLimit` | Maximum output tokens |
@@ -422,6 +423,7 @@ Create an instance: `model = client.Model`
 | --- | --- | --- |
 | `description` | `String` | Model description |
 | `displayName` | `String` | Human-readable model name |
+| `id` | `String` |  |
 | `inputTokenLimit` | `Integer` | Maximum input tokens |
 | `name` | `String` | Model resource name |
 | `outputTokenLimit` | `Integer` | Maximum output tokens |

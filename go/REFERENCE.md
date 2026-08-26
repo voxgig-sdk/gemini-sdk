@@ -321,6 +321,7 @@ fmt.Println(model.GetName()) // "model"
 | --- | --- | --- | --- |
 | `description` | `string` | No | Model description |
 | `displayName` | `string` | No | Human-readable model name |
+| `id` | `string` | No |  |
 | `inputTokenLimit` | `int` | No | Maximum input tokens |
 | `name` | `string` | No | Model resource name |
 | `outputTokenLimit` | `int` | No | Maximum output tokens |

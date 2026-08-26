@@ -53,6 +53,7 @@
 ---@class Model
 ---@field description? string
 ---@field displayName? string
+---@field id? string
 ---@field inputTokenLimit? number
 ---@field name? string
 ---@field outputTokenLimit? number
@@ -65,6 +66,7 @@
 ---@class ModelListMatch
 ---@field description? string
 ---@field displayName? string
+---@field id? string
 ---@field inputTokenLimit? number
 ---@field name? string
 ---@field outputTokenLimit? number

@@ -289,6 +289,7 @@ API path: ``
 | --- | --- |
 | `description` | Model description |
 | `displayName` | Human-readable model name |
+| `id` |  |
 | `inputTokenLimit` | Maximum input tokens |
 | `name` | Model resource name |
 | `outputTokenLimit` | Maximum output tokens |
@@ -415,6 +416,7 @@ Create an instance: `local model = client:Model(nil)`
 | --- | --- | --- |
 | `description` | `string` | Model description |
 | `displayName` | `string` | Human-readable model name |
+| `id` | `string` |  |
 | `inputTokenLimit` | `number` | Maximum input tokens |
 | `name` | `string` | Model resource name |
 | `outputTokenLimit` | `number` | Maximum output tokens |

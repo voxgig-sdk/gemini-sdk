@@ -306,6 +306,7 @@ API path: ``
 | --- | --- |
 | `description` | Model description |
 | `displayName` | Human-readable model name |
+| `id` |  |
 | `inputTokenLimit` | Maximum input tokens |
 | `name` | Model resource name |
 | `outputTokenLimit` | Maximum output tokens |
@@ -432,6 +433,7 @@ Create an instance: `$model = $client->Model();`
 | --- | --- | --- |
 | `description` | `string` | Model description |
 | `displayName` | `string` | Human-readable model name |
+| `id` | `string` |  |
 | `inputTokenLimit` | `int` | Maximum input tokens |
 | `name` | `string` | Model resource name |
 | `outputTokenLimit` | `int` | Maximum output tokens |

@@ -59,6 +59,7 @@ export interface ListModel {
 export interface Model {
   description?: string
   displayName?: string
+  id?: string
   inputTokenLimit?: number
   name?: string
   outputTokenLimit?: number
@@ -73,6 +74,7 @@ export interface ModelLoadMatch {
 export interface ModelListMatch {
   description?: string
   displayName?: string
+  id?: string
   inputTokenLimit?: number
   name?: string
   outputTokenLimit?: number

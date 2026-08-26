@@ -2,47 +2,47 @@
   "existing": {
     "model": {
       "MODEL00": {
-        "description": "s46",
-        "displayName": "s47",
-        "inputTokenLimit": "s48",
-        "name": "s49",
-        "outputTokenLimit": "s4a",
+        "description": "s50",
+        "displayName": "s51",
+        "id": "MODEL00",
+        "inputTokenLimit": "s53",
+        "name": "s54",
+        "outputTokenLimit": "s55",
         "supportedGenerationMethods": [],
-        "version": "s4c",
-        "id": "MODEL00"
+        "version": "s57"
       },
       "MODEL01": {
-        "description": "s8c",
-        "displayName": "s8d",
-        "inputTokenLimit": "s8e",
-        "name": "s8f",
-        "outputTokenLimit": "s90",
+        "description": "sa0",
+        "displayName": "sa1",
+        "id": "MODEL01",
+        "inputTokenLimit": "sa3",
+        "name": "sa4",
+        "outputTokenLimit": "sa5",
         "supportedGenerationMethods": [],
-        "version": "s92",
-        "id": "MODEL01"
+        "version": "sa7"
       },
       "MODEL02": {
-        "description": "sd2",
-        "displayName": "sd3",
-        "inputTokenLimit": "sd4",
-        "name": "sd5",
-        "outputTokenLimit": "sd6",
+        "description": "sf0",
+        "displayName": "sf1",
+        "id": "MODEL02",
+        "inputTokenLimit": "sf3",
+        "name": "sf4",
+        "outputTokenLimit": "sf5",
         "supportedGenerationMethods": [],
-        "version": "sd8",
-        "id": "MODEL02"
+        "version": "sf7"
       }
     }
   },
   "new": {
     "model": {
       "model_ref01": {
-        "description": "s118",
-        "displayName": "s119",
-        "inputTokenLimit": "s11a",
-        "name": "s11b",
-        "outputTokenLimit": "s11c",
+        "description": "s140",
+        "displayName": "s141",
+        "inputTokenLimit": "s143",
+        "name": "s144",
+        "outputTokenLimit": "s145",
         "supportedGenerationMethods": [],
-        "version": "s11e"
+        "version": "s147"
       }
     }
   }

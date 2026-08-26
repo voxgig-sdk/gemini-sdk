@@ -74,6 +74,7 @@ type ListModel struct {
 type Model struct {
 	Description *string `json:"description,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InputTokenLimit *int `json:"inputTokenLimit,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OutputTokenLimit *int `json:"outputTokenLimit,omitempty"`
@@ -90,6 +91,7 @@ type ModelLoadMatch struct {
 type ModelListMatch struct {
 	Description *string `json:"description,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InputTokenLimit *int `json:"inputTokenLimit,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OutputTokenLimit *int `json:"outputTokenLimit,omitempty"`

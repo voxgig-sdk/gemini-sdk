@@ -28,6 +28,7 @@ module GeminiConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -324,6 +325,10 @@ module GeminiConfig
             {
               "name" => "displayName",
               "short" => "Human-readable model name",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

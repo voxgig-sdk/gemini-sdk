@@ -18,6 +18,11 @@ main: kit: entity: model: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "inputTokenLimit"
       req: false
       short: "Maximum input tokens"
@@ -48,6 +53,11 @@ main: kit: entity: model: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "model"
   op: {

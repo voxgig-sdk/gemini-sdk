@@ -89,6 +89,7 @@ class ListModel(TypedDict):
 class Model(TypedDict, total=False):
     description: str
     displayName: str
+    id: str
     inputTokenLimit: int
     name: str
     outputTokenLimit: int
@@ -103,6 +104,7 @@ class ModelLoadMatch(TypedDict):
 class ModelListMatch(TypedDict, total=False):
     description: str
     displayName: str
+    id: str
     inputTokenLimit: int
     name: str
     outputTokenLimit: int

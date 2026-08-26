@@ -321,6 +321,7 @@ local model = client:Model(nil)
 | --- | --- | --- | --- |
 | `description` | `string` | No | Model description |
 | `displayName` | `string` | No | Human-readable model name |
+| `id` | `string` | No |  |
 | `inputTokenLimit` | `number` | No | Maximum input tokens |
 | `name` | `string` | No | Model resource name |
 | `outputTokenLimit` | `number` | No | Maximum output tokens |

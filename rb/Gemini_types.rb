@@ -170,6 +170,9 @@ end
 # @!attribute [rw] displayName
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] inputTokenLimit
 #   @return [Integer, nil]
 #
@@ -187,6 +190,7 @@ end
 Model = Struct.new(
   :description,
   :displayName,
+  :id,
   :inputTokenLimit,
   :name,
   :outputTokenLimit,
@@ -212,6 +216,9 @@ ModelLoadMatch = Struct.new(
 # @!attribute [rw] displayName
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] inputTokenLimit
 #   @return [Integer, nil]
 #
@@ -229,6 +236,7 @@ ModelLoadMatch = Struct.new(
 ModelListMatch = Struct.new(
   :description,
   :displayName,
+  :id,
   :inputTokenLimit,
   :name,
   :outputTokenLimit,
