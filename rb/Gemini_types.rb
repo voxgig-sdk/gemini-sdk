@@ -34,6 +34,9 @@ EmbedContent = Struct.new(
 # @!attribute [rw] model
 #   @return [String]
 #
+# @!attribute [rw] key
+#   @return [String]
+#
 # @!attribute [rw] content
 #   @return [Hash]
 #
@@ -47,6 +50,7 @@ EmbedContent = Struct.new(
 #   @return [Array, nil]
 EmbedContentCreateData = Struct.new(
   :model,
+  :key,
   :content,
   :taskType,
   :title,
@@ -92,6 +96,9 @@ GenerateContent = Struct.new(
 # @!attribute [rw] model
 #   @return [String]
 #
+# @!attribute [rw] key
+#   @return [String]
+#
 # @!attribute [rw] candidates
 #   @return [Array, nil]
 #
@@ -114,6 +121,7 @@ GenerateContent = Struct.new(
 #   @return [Hash, nil]
 GenerateContentCreateData = Struct.new(
   :model,
+  :key,
   :candidates,
   :contents,
   :generationConfig,
@@ -203,45 +211,29 @@ Model = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
 ModelLoadMatch = Struct.new(
   :id,
+  :key,
   keyword_init: true
 )
 
 # Request payload for Model#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
+# @!attribute [rw] key
+#   @return [String]
 #
-# @!attribute [rw] displayName
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] inputTokenLimit
+# @!attribute [rw] page_size
 #   @return [Integer, nil]
 #
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] outputTokenLimit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] supportedGenerationMethods
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] page_token
 #   @return [String, nil]
 ModelListMatch = Struct.new(
-  :description,
-  :displayName,
-  :id,
-  :inputTokenLimit,
-  :name,
-  :outputTokenLimit,
-  :supportedGenerationMethods,
-  :version,
+  :key,
+  :page_size,
+  :page_token,
   keyword_init: true
 )
 

@@ -14,6 +14,7 @@
 
 ---@class EmbedContentCreateData
 ---@field model string
+---@field key string
 ---@field content table
 ---@field taskType? string
 ---@field title? string
@@ -30,6 +31,7 @@
 
 ---@class GenerateContentCreateData
 ---@field model string
+---@field key string
 ---@field candidates? table
 ---@field contents table
 ---@field generationConfig? table
@@ -62,16 +64,12 @@
 
 ---@class ModelLoadMatch
 ---@field id string
+---@field key string
 
 ---@class ModelListMatch
----@field description? string
----@field displayName? string
----@field id? string
----@field inputTokenLimit? number
----@field name? string
----@field outputTokenLimit? number
----@field supportedGenerationMethods? table
----@field version? string
+---@field key string
+---@field page_size? number
+---@field page_token? string
 
 local M = {}
 

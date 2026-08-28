@@ -23,6 +23,7 @@ type EmbedContent struct {
 // EmbedContentCreateData is the typed request payload for EmbedContent.CreateTyped.
 type EmbedContentCreateData struct {
 	Model string `json:"model"`
+	Key string `json:"key"`
 	Content map[string]any `json:"content"`
 	TaskType *string `json:"taskType,omitempty"`
 	Title *string `json:"title,omitempty"`
@@ -43,6 +44,7 @@ type GenerateContent struct {
 // GenerateContentCreateData is the typed request payload for GenerateContent.CreateTyped.
 type GenerateContentCreateData struct {
 	Model string `json:"model"`
+	Key string `json:"key"`
 	Candidates *[]any `json:"candidates,omitempty"`
 	Contents []any `json:"contents"`
 	GenerationConfig *map[string]any `json:"generationConfig,omitempty"`
@@ -85,18 +87,14 @@ type Model struct {
 // ModelLoadMatch is the typed request payload for Model.LoadTyped.
 type ModelLoadMatch struct {
 	Id string `json:"id"`
+	Key string `json:"key"`
 }
 
 // ModelListMatch is the typed request payload for Model.ListTyped.
 type ModelListMatch struct {
-	Description *string `json:"description,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	Id *string `json:"id,omitempty"`
-	InputTokenLimit *int `json:"inputTokenLimit,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OutputTokenLimit *int `json:"outputTokenLimit,omitempty"`
-	SupportedGenerationMethods *[]any `json:"supportedGenerationMethods,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Key string `json:"key"`
+	PageSize *int `json:"page_size,omitempty"`
+	PageToken *string `json:"page_token,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

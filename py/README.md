@@ -43,7 +43,7 @@ client = GeminiSDK({
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.EmbedContent().create({"model": "example_model", "content": {}})
+created = client.EmbedContent().create({"model": "example_model", "key": "example_key", "content": {}})
 
 ```
 
@@ -340,6 +340,7 @@ Create an instance: `embed_content = client.EmbedContent()`
 ```python
 embed_content = client.EmbedContent().create({
     "model": "example_model",  # str
+    "key": "example_key",  # str
     "content": {},  # dict
 })
 ```
@@ -372,6 +373,7 @@ Create an instance: `generate_content = client.GenerateContent()`
 ```python
 generate_content = client.GenerateContent().create({
     "model": "example_model",  # str
+    "key": "example_key",  # str
     "contents": [],  # list
 })
 ```
@@ -437,14 +439,37 @@ Create an instance: `model = client.Model()`
 #### Example: Load
 
 ```python
-model = client.Model().load({"id": "model_id"})
+model = client.Model().load({"id": "model_id", "key": "key"})
 ```
 
 #### Example: List
 
 ```python
-models = client.Model().list()
+models = client.Model().list({"key": "example"})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

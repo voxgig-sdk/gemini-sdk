@@ -37,7 +37,7 @@ $client = new GeminiSDK([
 
 ```php
 // create() returns the ENTITY — call data_get() for the created EmbedContent record.
-$created = $client->EmbedContent()->create(["model" => "example_model", "content" => []]);
+$created = $client->EmbedContent()->create(["model" => "example_model", "key" => "example_key", "content" => []]);
 
 ```
 
@@ -346,6 +346,7 @@ Create an instance: `$embed_content = $client->EmbedContent();`
 ```php
 $embed_content = $client->EmbedContent()->create([
     "model" => null, // string
+    "key" => null, // string
     "content" => null, // array
 ]);
 ```
@@ -378,6 +379,7 @@ Create an instance: `$generate_content = $client->GenerateContent();`
 ```php
 $generate_content = $client->GenerateContent()->create([
     "model" => null, // string
+    "key" => null, // string
     "contents" => null, // array
 ]);
 ```
@@ -444,7 +446,7 @@ Create an instance: `$model = $client->Model();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Model record (throws on error).
-$model = $client->Model()->load(["id" => "model_id"]);
+$model = $client->Model()->load(["id" => "model_id", "key" => "key"]);
 ```
 
 #### Example: List
@@ -453,6 +455,29 @@ $model = $client->Model()->load(["id" => "model_id"]);
 // list() returns an array of Model records (throws on error).
 $models = $client->Model()->list();
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

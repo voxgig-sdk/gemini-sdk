@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:EmbedContent():create({ model = "example_model", content = {} })
+local created, err = client:EmbedContent():create({ model = "example_model", key = "example_key", content = {} })
 if err then error(err) end
 
 ```
@@ -329,6 +329,7 @@ Create an instance: `local embed_content = client:EmbedContent(nil)`
 ```lua
 local embed_content, err = client:EmbedContent():create({
   model = "example_model", -- string
+  key = "example_key", -- string
   content = {}, -- table
 })
 ```
@@ -361,6 +362,7 @@ Create an instance: `local generate_content = client:GenerateContent(nil)`
 ```lua
 local generate_content, err = client:GenerateContent():create({
   model = "example_model", -- string
+  key = "example_key", -- string
   contents = {}, -- table
 })
 ```
@@ -426,7 +428,7 @@ Create an instance: `local model = client:Model(nil)`
 #### Example: Load
 
 ```lua
-local model, err = client:Model():load({ id = "model_id" })
+local model, err = client:Model():load({ id = "model_id", key = "key" })
 ```
 
 #### Example: List
@@ -434,6 +436,29 @@ local model, err = client:Model():load({ id = "model_id" })
 ```lua
 local models, err = client:Model():list()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

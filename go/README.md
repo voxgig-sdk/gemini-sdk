@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a embedContent.
-    created, err := client.EmbedContent(nil).Create(map[string]any{"model": "example_model", "content": map[string]any{}}, nil)
+    created, err := client.EmbedContent(nil).Create(map[string]any{"model": "example_model", "key": "example_key", "content": map[string]any{}}, nil)
     if err != nil {
         panic(err)
     }
@@ -362,6 +362,7 @@ Create an instance: `embedContent := client.EmbedContent(nil)`
 ```go
 result, err := client.EmbedContent(nil).Create(map[string]any{
     "model": "example_model",
+    "key": "example_key",
     "content": map[string]any{},
 }, nil)
 if err != nil {
@@ -398,6 +399,7 @@ Create an instance: `generateContent := client.GenerateContent(nil)`
 ```go
 result, err := client.GenerateContent(nil).Create(map[string]any{
     "model": "example_model",
+    "key": "example_key",
     "contents": []any{},
 }, nil)
 if err != nil {
@@ -471,7 +473,7 @@ Create an instance: `model := client.Model(nil)`
 #### Example: Load
 
 ```go
-model, err := client.Model(nil).Load(map[string]any{"id": "model_id"}, nil)
+model, err := client.Model(nil).Load(map[string]any{"id": "model_id", "key": "key"}, nil)
 if err != nil {
     panic(err)
 }
@@ -487,6 +489,29 @@ if err != nil {
 }
 fmt.Println(models) // the array of records
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

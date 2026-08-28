@@ -25,6 +25,7 @@ class EmbedContent
 class EmbedContentCreateData
 {
     public string $model;
+    public string $key;
     public array $content;
     public ?string $taskType = null;
     public ?string $title = null;
@@ -47,6 +48,7 @@ class GenerateContent
 class GenerateContentCreateData
 {
     public string $model;
+    public string $key;
     public ?array $candidates = null;
     public array $contents;
     public ?array $generationConfig = null;
@@ -94,18 +96,14 @@ class Model
 class ModelLoadMatch
 {
     public string $id;
+    public string $key;
 }
 
 /** Request payload for Model#list. */
 class ModelListMatch
 {
-    public ?string $description = null;
-    public ?string $displayName = null;
-    public ?string $id = null;
-    public ?int $inputTokenLimit = null;
-    public ?string $name = null;
-    public ?int $outputTokenLimit = null;
-    public ?array $supportedGenerationMethods = null;
-    public ?string $version = null;
+    public string $key;
+    public ?int $page_size = null;
+    public ?string $page_token = null;
 }
 

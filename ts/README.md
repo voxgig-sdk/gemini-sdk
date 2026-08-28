@@ -41,6 +41,7 @@ const client = new GeminiSDK({
 // Create — returns the created EmbedContent ENTITY (.data() for the record)
 const created = await client.EmbedContent().create({
   model: 'example_model',
+  key: 'example_key',
   content: {},
 })
 
@@ -389,6 +390,7 @@ Create an instance: `const embed_content = client.EmbedContent()`
 ```ts
 const embed_content = await client.EmbedContent().create({
   model: 'example_model',
+  key: 'example_key',
   content: {},
 })
 ```
@@ -421,6 +423,7 @@ Create an instance: `const generate_content = client.GenerateContent()`
 ```ts
 const generate_content = await client.GenerateContent().create({
   model: 'example_model',
+  key: 'example_key',
   contents: [],
 })
 ```
@@ -486,14 +489,37 @@ Create an instance: `const model = client.Model()`
 #### Example: Load
 
 ```ts
-const model = await client.Model().load({ id: 'model_id' })
+const model = await client.Model().load({ id: 'model_id', key: 'key' })
 ```
 
 #### Example: List
 
 ```ts
-const models = await client.Model().list()
+const models = await client.Model().list({ key: "example" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

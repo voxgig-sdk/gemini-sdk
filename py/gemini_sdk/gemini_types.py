@@ -28,6 +28,7 @@ class EmbedContent(EmbedContentRequired, total=False):
 
 class EmbedContentCreateDataRequired(TypedDict):
     model: str
+    key: str
     content: dict
 
 
@@ -52,6 +53,7 @@ class GenerateContent(GenerateContentRequired, total=False):
 
 class GenerateContentCreateDataRequired(TypedDict):
     model: str
+    key: str
     contents: list
 
 
@@ -99,14 +101,13 @@ class Model(TypedDict, total=False):
 
 class ModelLoadMatch(TypedDict):
     id: str
+    key: str
 
 
-class ModelListMatch(TypedDict, total=False):
-    description: str
-    displayName: str
-    id: str
-    inputTokenLimit: int
-    name: str
-    outputTokenLimit: int
-    supportedGenerationMethods: list
-    version: str
+class ModelListMatchRequired(TypedDict):
+    key: str
+
+
+class ModelListMatch(ModelListMatchRequired, total=False):
+    page_size: int
+    page_token: str

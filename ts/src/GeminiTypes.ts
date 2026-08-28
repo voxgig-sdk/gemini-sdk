@@ -14,6 +14,7 @@ export interface EmbedContent {
 
 export interface EmbedContentCreateData {
   model: string
+  key: string
   content: Record<string, any>
   taskType?: string
   title?: string
@@ -32,6 +33,7 @@ export interface GenerateContent {
 
 export interface GenerateContentCreateData {
   model: string
+  key: string
   candidates?: any[]
   contents: any[]
   generationConfig?: Record<string, any>
@@ -69,16 +71,12 @@ export interface Model {
 
 export interface ModelLoadMatch {
   id: string
+  key: string
 }
 
 export interface ModelListMatch {
-  description?: string
-  displayName?: string
-  id?: string
-  inputTokenLimit?: number
-  name?: string
-  outputTokenLimit?: number
-  supportedGenerationMethods?: any[]
-  version?: string
+  key: string
+  page_size?: number
+  page_token?: string
 }
 
