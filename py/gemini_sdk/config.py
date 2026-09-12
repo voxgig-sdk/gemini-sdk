@@ -1,6 +1,14 @@
 # Gemini SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -111,9 +119,13 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/models/{model}:embedContent",
-                "parts": [
-                  "models",
-                  "{model}:embedContent",
+                "segments": [
+                  {
+                    "lit": "models",
+                  },
+                  {
+                    "lit": "{model}:embedContent",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -125,16 +137,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.embedding`",
                 },
+                "parts": [
+                  "models",
+                  "{model}:embedContent",
+                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "model",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "generate_content": {
@@ -203,9 +215,13 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/models/{model}:generateContent",
-                "parts": [
-                  "models",
-                  "{model}:generateContent",
+                "segments": [
+                  {
+                    "lit": "models",
+                  },
+                  {
+                    "lit": "{model}:generateContent",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -217,6 +233,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "models",
+                  "{model}:generateContent",
+                ],
               },
               {
                 "args": {
@@ -243,9 +263,13 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/models/{model}:streamGenerateContent",
-                "parts": [
-                  "models",
-                  "{model}:streamGenerateContent",
+                "segments": [
+                  {
+                    "lit": "models",
+                  },
+                  {
+                    "lit": "{model}:streamGenerateContent",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -257,16 +281,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "models",
+                  "{model}:streamGenerateContent",
+                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "model",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "interaction": {
@@ -300,14 +324,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/interactions",
-                "parts": [
-                  "interactions",
+                "segments": [
+                  {
+                    "lit": "interactions",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.metadata`",
                 },
+                "parts": [
+                  "interactions",
+                ],
               },
             ],
           },
@@ -366,6 +395,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "model",
         "op": {
           "list": {
@@ -400,8 +433,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/models",
-                "parts": [
-                  "models",
+                "segments": [
+                  {
+                    "lit": "models",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -414,6 +449,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.models`",
                 },
+                "parts": [
+                  "models",
+                ],
               },
             ],
           },
@@ -446,15 +484,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/models/{model}",
-                "parts": [
-                  "models",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "model": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "models",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -465,6 +507,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "models",
+                  "{id}",
+                ],
               },
             ],
           },

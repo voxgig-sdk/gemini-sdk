@@ -84,7 +84,7 @@ def _list_model_basic_setup(extra):
         "GEMINI_TEST_LIST_MODEL_ENTID": idmap,
         "GEMINI_TEST_LIVE": "FALSE",
         "GEMINI_TEST_EXPLAIN": "FALSE",
-        "GEMINI_APIKEY": "NONE",
+        "GEMINI_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -94,6 +94,10 @@ def _list_model_basic_setup(extra):
 
     if env.get("GEMINI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GEMINI_APIKEY"),
             },

@@ -52,7 +52,7 @@ func TestGenerateContentEntity(t *testing.T) {
 		// CREATE
 		generateContentRef01Ent := client.GenerateContent(nil)
 		generateContentRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "generate_content"}, setup.data), "generate_content_ref01"))
+			vs.GetPath(setup.data, []any{"new", "generate_content"}), "generate_content_ref01"))
 		generateContentRef01Data["model"] = setup.idmap["model01"]
 
 		generateContentRef01DataResult, err := generateContentRef01Ent.Create(generateContentRef01Data, nil)
@@ -91,8 +91,8 @@ func generate_contentBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
-		[]any{"generate_content01", "generate_content02", "generate_content03", "model01", "model02", "model03"},
+	idmap, _ := vs.Transform(
+		[]any{"generate_content01", "generate_content02", "generate_content03", "model01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -111,7 +111,7 @@ func generate_contentBasicSetup(extra map[string]any) *entityTestSetup {
 		"GEMINI_TEST_GENERATE_CONTENT_ENTID": idmap,
 		"GEMINI_TEST_LIVE":      "FALSE",
 		"GEMINI_TEST_EXPLAIN":   "FALSE",
-		"GEMINI_APIKEY":         "NONE",
+		"GEMINI_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GEMINI_TEST_GENERATE_CONTENT_ENTID"])
@@ -120,11 +120,23 @@ func generate_contentBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GEMINI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GEMINI_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGeminiSDK(core.ToMapAny(mergedOpts))
 	}

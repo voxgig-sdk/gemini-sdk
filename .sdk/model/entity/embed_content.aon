@@ -59,9 +59,13 @@ main: kit: entity: embed_content: {
           }
           method: "POST"
           orig: "/models/{model}:embedContent"
-          parts: [
-            "models"
-            "{model}:embedContent"
+          segments: [
+            {
+              lit: "models"
+            }
+            {
+              lit: "{model}:embedContent"
+            }
           ]
           select: {
             exist: [
@@ -76,14 +80,6 @@ main: kit: entity: embed_content: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "model"
-      ]
-    ]
   }
 
 

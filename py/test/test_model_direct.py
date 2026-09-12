@@ -104,15 +104,18 @@ def _model_direct_setup(mockres):
     env = runner.env_override({
         "GEMINI_TEST_MODEL_ENTID": {},
         "GEMINI_TEST_LIVE": "FALSE",
-        "GEMINI_APIKEY": "NONE",
+        "GEMINI_APIKEY": "",
     })
 
     live = env.get("GEMINI_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("GEMINI_APIKEY"),
-        }
+        })
         client = GeminiSDK(merged_opts)
         return {
             "client": client,

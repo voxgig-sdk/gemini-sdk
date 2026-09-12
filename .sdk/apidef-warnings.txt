@@ -1,6 +1,5 @@
 {
   point: "warning"
-  when: 1787877472028
   note: "No paths defined for entity=list_model"
   entm: {
     name: "list_model"

@@ -52,7 +52,7 @@ func TestInteractionEntity(t *testing.T) {
 		// CREATE
 		interactionRef01Ent := client.Interaction(nil)
 		interactionRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "interaction"}, setup.data), "interaction_ref01"))
+			vs.GetPath(setup.data, []any{"new", "interaction"}), "interaction_ref01"))
 
 		interactionRef01DataResult, err := interactionRef01Ent.Create(interactionRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func interactionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"interaction01", "interaction02", "interaction03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func interactionBasicSetup(extra map[string]any) *entityTestSetup {
 		"GEMINI_TEST_INTERACTION_ENTID": idmap,
 		"GEMINI_TEST_LIVE":      "FALSE",
 		"GEMINI_TEST_EXPLAIN":   "FALSE",
-		"GEMINI_APIKEY":         "NONE",
+		"GEMINI_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GEMINI_TEST_INTERACTION_ENTID"])
@@ -119,11 +119,23 @@ func interactionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GEMINI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GEMINI_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGeminiSDK(core.ToMapAny(mergedOpts))
 	}

@@ -33,8 +33,10 @@ main: kit: entity: interaction: {
         {
           method: "POST"
           orig: "/interactions"
-          parts: [
-            "interactions"
+          segments: [
+            {
+              lit: "interactions"
+            }
           ]
           transform: {
             req: "`reqdata`"

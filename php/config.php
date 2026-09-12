@@ -116,9 +116,13 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/models/{model}:embedContent',
-                  'parts' => [
-                    'models',
-                    '{model}:embedContent',
+                  'segments' => [
+                    [
+                      'lit' => 'models',
+                    ],
+                    [
+                      'lit' => '{model}:embedContent',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -130,16 +134,16 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body.embedding`',
                   ],
+                  'parts' => [
+                    'models',
+                    '{model}:embedContent',
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'model',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'generate_content' => [
@@ -208,9 +212,13 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/models/{model}:generateContent',
-                  'parts' => [
-                    'models',
-                    '{model}:generateContent',
+                  'segments' => [
+                    [
+                      'lit' => 'models',
+                    ],
+                    [
+                      'lit' => '{model}:generateContent',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -221,6 +229,10 @@ class GeminiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'models',
+                    '{model}:generateContent',
                   ],
                 ],
                 [
@@ -248,9 +260,13 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/models/{model}:streamGenerateContent',
-                  'parts' => [
-                    'models',
-                    '{model}:streamGenerateContent',
+                  'segments' => [
+                    [
+                      'lit' => 'models',
+                    ],
+                    [
+                      'lit' => '{model}:streamGenerateContent',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -262,16 +278,16 @@ class GeminiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'models',
+                    '{model}:streamGenerateContent',
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'model',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'interaction' => [
@@ -305,13 +321,18 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/interactions',
-                  'parts' => [
-                    'interactions',
+                  'segments' => [
+                    [
+                      'lit' => 'interactions',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.metadata`',
+                  ],
+                  'parts' => [
+                    'interactions',
                   ],
                 ],
               ],
@@ -371,6 +392,10 @@ class GeminiConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'model',
           'op' => [
             'list' => [
@@ -405,8 +430,10 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/models',
-                  'parts' => [
-                    'models',
+                  'segments' => [
+                    [
+                      'lit' => 'models',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -418,6 +445,9 @@ class GeminiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.models`',
+                  ],
+                  'parts' => [
+                    'models',
                   ],
                 ],
               ],
@@ -451,13 +481,17 @@ class GeminiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/models/{model}',
-                  'parts' => [
-                    'models',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'model' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'models',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -469,6 +503,10 @@ class GeminiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'models',
+                    '{id}',
                   ],
                 ],
               ],

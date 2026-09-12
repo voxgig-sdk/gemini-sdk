@@ -58,7 +58,7 @@ def embed_content_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["embed_content01", "embed_content02", "embed_content03", "model01", "model02", "model03"],
+    ["embed_content01", "embed_content02", "embed_content03", "model01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -77,7 +77,7 @@ def embed_content_basic_setup(extra)
     "GEMINI_TEST_EMBED_CONTENT_ENTID" => idmap,
     "GEMINI_TEST_LIVE" => "FALSE",
     "GEMINI_TEST_EXPLAIN" => "FALSE",
-    "GEMINI_APIKEY" => "NONE",
+    "GEMINI_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -88,6 +88,9 @@ def embed_content_basic_setup(extra)
 
   if env["GEMINI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GEMINI_APIKEY"],
       },

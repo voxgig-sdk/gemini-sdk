@@ -74,9 +74,13 @@ main: kit: entity: generate_content: {
           }
           method: "POST"
           orig: "/models/{model}:generateContent"
-          parts: [
-            "models"
-            "{model}:generateContent"
+          segments: [
+            {
+              lit: "models"
+            }
+            {
+              lit: "{model}:generateContent"
+            }
           ]
           select: {
             exist: [
@@ -113,9 +117,13 @@ main: kit: entity: generate_content: {
           }
           method: "POST"
           orig: "/models/{model}:streamGenerateContent"
-          parts: [
-            "models"
-            "{model}:streamGenerateContent"
+          segments: [
+            {
+              lit: "models"
+            }
+            {
+              lit: "{model}:streamGenerateContent"
+            }
           ]
           select: {
             exist: [
@@ -130,14 +138,6 @@ main: kit: entity: generate_content: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "model"
-      ]
-    ]
   }
 
 
