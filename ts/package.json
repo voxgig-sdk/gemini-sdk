@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/gemini",
+  "name": "@voxgig-sdk/gemini-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Gemini public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

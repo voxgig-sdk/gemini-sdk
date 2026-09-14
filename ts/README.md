@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GeminiSDK } from '@voxgig-sdk/gemini'
+import { GeminiSDK } from '@voxgig-sdk/gemini-sdk'
 
 const client = new GeminiSDK({
   apikey: process.env.GEMINI_APIKEY,
@@ -581,7 +581,7 @@ gemini/
 Import the SDK from the package root:
 
 ```ts
-import { GeminiSDK } from '@voxgig-sdk/gemini'
+import { GeminiSDK } from '@voxgig-sdk/gemini-sdk'
 ```
 
 ### Entity state

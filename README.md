@@ -109,7 +109,7 @@ local results, err = client:Model():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/gemini` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gemini-sdk/releases) |
+| TypeScript | `@voxgig-sdk/gemini-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gemini-sdk/releases) |
 | Python | `voxgig-sdk-gemini` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gemini-sdk/releases) |
 | PHP | `voxgig-sdk/gemini` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gemini-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/gemini-sdk/go` | `go get github.com/voxgig-sdk/gemini-sdk/go@latest` |
@@ -123,7 +123,7 @@ local results, err = client:Model():list()
 ### TypeScript
 
 ```ts
-import { GeminiSDK } from '@voxgig-sdk/gemini'
+import { GeminiSDK } from '@voxgig-sdk/gemini-sdk'
 
 const client = new GeminiSDK({
   apikey: process.env.GEMINI_APIKEY,
