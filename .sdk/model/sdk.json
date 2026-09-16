@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "embed_content": {
           "active": true,
@@ -90,6 +154,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "POST /models/{model}:embedContent",
+                    "json": "{\"operationId\":\"embedContent\",\"parameters\":[{\"description\":\"The embedding model to use\",\"in\":\"path\",\"name\":\"model\",\"required\":true,\"schema\":{\"example\":\"embedding-001\",\"type\":\"string\"}},{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"key\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"content\":{\"properties\":{\"parts\":{\"items\":{\"properties\":{\"fileData\":{\"properties\":{\"fileUri\":{\"description\":\"URI of the file\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the file\",\"type\":\"string\"}},\"type\":\"object\"},\"functionCall\":{\"properties\":{\"args\":{\"description\":\"Function arguments\",\"type\":\"object\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"}},\"type\":\"object\"},\"functionResponse\":{\"properties\":{\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"response\":{\"description\":\"Function response data\",\"type\":\"object\"}},\"type\":\"object\"},\"inlineData\":{\"properties\":{\"data\":{\"description\":\"Base64 encoded data\",\"format\":\"byte\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the inline data\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Text content\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"role\":{\"description\":\"Role of the content sender\",\"enum\":[\"user\",\"model\"],\"type\":\"string\"}},\"type\":\"object\"},\"taskType\":{\"description\":\"Optional task type for embedding optimization\",\"enum\":[\"TASK_TYPE_UNSPECIFIED\",\"RETRIEVAL_QUERY\",\"RETRIEVAL_DOCUMENT\",\"SEMANTIC_SIMILARITY\",\"CLASSIFICATION\",\"CLUSTERING\"],\"type\":\"string\"},\"title\":{\"description\":\"Optional title for document embeddings\",\"type\":\"string\"}},\"required\":[\"content\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"embedding\":{\"properties\":{\"values\":{\"description\":\"Embedding vector values\",\"items\":{\"format\":\"float\",\"type\":\"number\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Embedding generated successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "POST",
@@ -203,6 +273,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "POST /models/{model}:generateContent",
+                    "json": "{\"operationId\":\"generateContent\",\"parameters\":[{\"description\":\"The model to use for content generation (e.g., gemini-2.5-flash, gemini-3.6-flash, gemini-3.1-pro)\",\"in\":\"path\",\"name\":\"model\",\"required\":true,\"schema\":{\"example\":\"gemini-2.5-flash\",\"type\":\"string\"}},{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"key\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"textGeneration\":{\"summary\":\"Text generation example\",\"value\":{\"contents\":[{\"parts\":[{\"text\":\"Write a story about a magic backpack.\"}]}]}}},\"schema\":{\"properties\":{\"contents\":{\"description\":\"Array of content parts for generation\",\"items\":{\"properties\":{\"parts\":{\"items\":{\"properties\":{\"fileData\":{\"properties\":{\"fileUri\":{\"description\":\"URI of the file\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the file\",\"type\":\"string\"}},\"type\":\"object\"},\"functionCall\":{\"properties\":{\"args\":{\"description\":\"Function arguments\",\"type\":\"object\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"}},\"type\":\"object\"},\"functionResponse\":{\"properties\":{\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"response\":{\"description\":\"Function response data\",\"type\":\"object\"}},\"type\":\"object\"},\"inlineData\":{\"properties\":{\"data\":{\"description\":\"Base64 encoded data\",\"format\":\"byte\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the inline data\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Text content\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"role\":{\"description\":\"Role of the content sender\",\"enum\":[\"user\",\"model\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"generationConfig\":{\"properties\":{\"candidateCount\":{\"description\":\"Number of response candidates to generate\",\"type\":\"integer\"},\"maxOutputTokens\":{\"description\":\"Maximum number of tokens to generate\",\"type\":\"integer\"},\"responseMimeType\":{\"description\":\"MIME type for structured output (e.g., application/json)\",\"type\":\"string\"},\"responseSchema\":{\"description\":\"JSON schema for structured output\",\"type\":\"object\"},\"stopSequences\":{\"description\":\"Sequences where generation should stop\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"temperature\":{\"description\":\"Controls randomness of the output (0.0 to 2.0)\",\"format\":\"float\",\"maximum\":2,\"minimum\":0,\"type\":\"number\"},\"topK\":{\"description\":\"Top-k sampling parameter\",\"type\":\"integer\"},\"topP\":{\"description\":\"Nucleus sampling threshold\",\"format\":\"float\",\"maximum\":1,\"minimum\":0,\"type\":\"number\"}},\"type\":\"object\"},\"safetySettings\":{\"description\":\"Safety settings for content filtering\",\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"enum\":[\"HARM_CATEGORY_HARASSMENT\",\"HARM_CATEGORY_HATE_SPEECH\",\"HARM_CATEGORY_SEXUALLY_EXPLICIT\",\"HARM_CATEGORY_DANGEROUS_CONTENT\"],\"type\":\"string\"},\"threshold\":{\"description\":\"Threshold for blocking content\",\"enum\":[\"BLOCK_NONE\",\"BLOCK_LOW_AND_ABOVE\",\"BLOCK_MEDIUM_AND_ABOVE\",\"BLOCK_ONLY_HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"tools\":{\"description\":\"Tools available for function calling\",\"items\":{\"properties\":{\"codeExecution\":{\"description\":\"Enable code execution tool\",\"type\":\"object\"},\"functionDeclarations\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Function description\",\"type\":\"string\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"parameters\":{\"description\":\"JSON schema of function parameters\",\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"googleSearch\":{\"description\":\"Enable Google Search tool\",\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"contents\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"candidates\":{\"items\":{\"properties\":{\"content\":{\"properties\":{\"parts\":{\"items\":{\"properties\":{\"fileData\":{\"properties\":{\"fileUri\":{\"description\":\"URI of the file\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the file\",\"type\":\"string\"}},\"type\":\"object\"},\"functionCall\":{\"properties\":{\"args\":{\"description\":\"Function arguments\",\"type\":\"object\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"}},\"type\":\"object\"},\"functionResponse\":{\"properties\":{\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"response\":{\"description\":\"Function response data\",\"type\":\"object\"}},\"type\":\"object\"},\"inlineData\":{\"properties\":{\"data\":{\"description\":\"Base64 encoded data\",\"format\":\"byte\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the inline data\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Text content\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"role\":{\"description\":\"Role of the content sender\",\"enum\":[\"user\",\"model\"],\"type\":\"string\"}},\"type\":\"object\"},\"finishReason\":{\"enum\":[\"FINISH_REASON_UNSPECIFIED\",\"STOP\",\"MAX_TOKENS\",\"SAFETY\",\"RECITATION\",\"OTHER\"],\"type\":\"string\"},\"index\":{\"type\":\"integer\"},\"safetyRatings\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"type\":\"string\"},\"probability\":{\"enum\":[\"NEGLIGIBLE\",\"LOW\",\"MEDIUM\",\"HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"},\"promptFeedback\":{\"properties\":{\"blockReason\":{\"description\":\"Reason if prompt was blocked\",\"type\":\"string\"},\"safetyRatings\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"type\":\"string\"},\"probability\":{\"enum\":[\"NEGLIGIBLE\",\"LOW\",\"MEDIUM\",\"HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"usageMetadata\":{\"properties\":{\"candidatesTokenCount\":{\"description\":\"Number of tokens in generated candidates\",\"type\":\"integer\"},\"promptTokenCount\":{\"description\":\"Number of tokens in the prompt\",\"type\":\"integer\"},\"totalTokenCount\":{\"description\":\"Total token count\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successfully generated content\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid parameters\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized - Invalid API key\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/models/{model}:generateContent",
@@ -249,6 +325,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "POST /models/{model}:streamGenerateContent",
+                    "json": "{\"operationId\":\"streamGenerateContent\",\"parameters\":[{\"description\":\"The model to use for streaming content generation\",\"in\":\"path\",\"name\":\"model\",\"required\":true,\"schema\":{\"example\":\"gemini-3.6-flash\",\"type\":\"string\"}},{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"key\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"contents\":{\"description\":\"Array of content parts for generation\",\"items\":{\"properties\":{\"parts\":{\"items\":{\"properties\":{\"fileData\":{\"properties\":{\"fileUri\":{\"description\":\"URI of the file\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the file\",\"type\":\"string\"}},\"type\":\"object\"},\"functionCall\":{\"properties\":{\"args\":{\"description\":\"Function arguments\",\"type\":\"object\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"}},\"type\":\"object\"},\"functionResponse\":{\"properties\":{\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"response\":{\"description\":\"Function response data\",\"type\":\"object\"}},\"type\":\"object\"},\"inlineData\":{\"properties\":{\"data\":{\"description\":\"Base64 encoded data\",\"format\":\"byte\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the inline data\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Text content\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"role\":{\"description\":\"Role of the content sender\",\"enum\":[\"user\",\"model\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"generationConfig\":{\"properties\":{\"candidateCount\":{\"description\":\"Number of response candidates to generate\",\"type\":\"integer\"},\"maxOutputTokens\":{\"description\":\"Maximum number of tokens to generate\",\"type\":\"integer\"},\"responseMimeType\":{\"description\":\"MIME type for structured output (e.g., application/json)\",\"type\":\"string\"},\"responseSchema\":{\"description\":\"JSON schema for structured output\",\"type\":\"object\"},\"stopSequences\":{\"description\":\"Sequences where generation should stop\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"temperature\":{\"description\":\"Controls randomness of the output (0.0 to 2.0)\",\"format\":\"float\",\"maximum\":2,\"minimum\":0,\"type\":\"number\"},\"topK\":{\"description\":\"Top-k sampling parameter\",\"type\":\"integer\"},\"topP\":{\"description\":\"Nucleus sampling threshold\",\"format\":\"float\",\"maximum\":1,\"minimum\":0,\"type\":\"number\"}},\"type\":\"object\"},\"safetySettings\":{\"description\":\"Safety settings for content filtering\",\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"enum\":[\"HARM_CATEGORY_HARASSMENT\",\"HARM_CATEGORY_HATE_SPEECH\",\"HARM_CATEGORY_SEXUALLY_EXPLICIT\",\"HARM_CATEGORY_DANGEROUS_CONTENT\"],\"type\":\"string\"},\"threshold\":{\"description\":\"Threshold for blocking content\",\"enum\":[\"BLOCK_NONE\",\"BLOCK_LOW_AND_ABOVE\",\"BLOCK_MEDIUM_AND_ABOVE\",\"BLOCK_ONLY_HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"tools\":{\"description\":\"Tools available for function calling\",\"items\":{\"properties\":{\"codeExecution\":{\"description\":\"Enable code execution tool\",\"type\":\"object\"},\"functionDeclarations\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Function description\",\"type\":\"string\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"parameters\":{\"description\":\"JSON schema of function parameters\",\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"googleSearch\":{\"description\":\"Enable Google Search tool\",\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"contents\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"candidates\":{\"items\":{\"properties\":{\"content\":{\"properties\":{\"parts\":{\"items\":{\"properties\":{\"fileData\":{\"properties\":{\"fileUri\":{\"description\":\"URI of the file\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the file\",\"type\":\"string\"}},\"type\":\"object\"},\"functionCall\":{\"properties\":{\"args\":{\"description\":\"Function arguments\",\"type\":\"object\"},\"name\":{\"description\":\"Function name\",\"type\":\"string\"}},\"type\":\"object\"},\"functionResponse\":{\"properties\":{\"name\":{\"description\":\"Function name\",\"type\":\"string\"},\"response\":{\"description\":\"Function response data\",\"type\":\"object\"}},\"type\":\"object\"},\"inlineData\":{\"properties\":{\"data\":{\"description\":\"Base64 encoded data\",\"format\":\"byte\",\"type\":\"string\"},\"mimeType\":{\"description\":\"MIME type of the inline data\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Text content\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"role\":{\"description\":\"Role of the content sender\",\"enum\":[\"user\",\"model\"],\"type\":\"string\"}},\"type\":\"object\"},\"finishReason\":{\"enum\":[\"FINISH_REASON_UNSPECIFIED\",\"STOP\",\"MAX_TOKENS\",\"SAFETY\",\"RECITATION\",\"OTHER\"],\"type\":\"string\"},\"index\":{\"type\":\"integer\"},\"safetyRatings\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"type\":\"string\"},\"probability\":{\"enum\":[\"NEGLIGIBLE\",\"LOW\",\"MEDIUM\",\"HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"},\"promptFeedback\":{\"properties\":{\"blockReason\":{\"description\":\"Reason if prompt was blocked\",\"type\":\"string\"},\"safetyRatings\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Harm category\",\"type\":\"string\"},\"probability\":{\"enum\":[\"NEGLIGIBLE\",\"LOW\",\"MEDIUM\",\"HIGH\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"usageMetadata\":{\"properties\":{\"candidatesTokenCount\":{\"description\":\"Number of tokens in generated candidates\",\"type\":\"integer\"},\"promptTokenCount\":{\"description\":\"Number of tokens in the prompt\",\"type\":\"integer\"},\"totalTokenCount\":{\"description\":\"Total token count\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Streaming content generation initiated\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "POST",
@@ -316,6 +398,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "POST /interactions",
+                    "json": "{\"operationId\":\"createInteraction\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"textGeneration\":{\"summary\":\"Simple text generation\",\"value\":{\"input\":\"Explain how AI works in a few words\",\"model\":\"gemini-3.6-flash\"}}},\"schema\":{\"properties\":{\"config\":{\"description\":\"Optional configuration parameters for the interaction\",\"type\":\"object\"},\"input\":{\"description\":\"The input prompt or query\",\"example\":\"Explain how AI works in a few words\",\"type\":\"string\"},\"model\":{\"description\":\"The model to use for the interaction\",\"example\":\"gemini-3.6-flash\",\"type\":\"string\"}},\"required\":[\"model\",\"input\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"metadata\":{\"description\":\"Additional metadata about the interaction\",\"type\":\"object\"},\"output_text\":{\"description\":\"The generated text output from the model\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful interaction creation\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid input parameters\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized - Invalid or missing API key\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/interactions",
@@ -452,6 +540,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /models",
+                    "json": "{\"operationId\":\"listModels\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"key\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Maximum number of models to return\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":50,\"type\":\"integer\"}},{\"description\":\"Token for pagination\",\"in\":\"query\",\"name\":\"pageToken\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"models\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Model description\",\"type\":\"string\"},\"displayName\":{\"description\":\"Human-readable model name\",\"type\":\"string\"},\"inputTokenLimit\":{\"description\":\"Maximum input tokens\",\"type\":\"integer\"},\"name\":{\"description\":\"Model resource name\",\"type\":\"string\"},\"outputTokenLimit\":{\"description\":\"Maximum output tokens\",\"type\":\"integer\"},\"supportedGenerationMethods\":{\"description\":\"Supported generation methods\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"Model version\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"nextPageToken\":{\"description\":\"Token for next page of results\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"List of available models\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/models",
@@ -503,6 +597,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /models/{model}",
+                    "json": "{\"operationId\":\"getModel\",\"parameters\":[{\"description\":\"The model identifier\",\"in\":\"path\",\"name\":\"model\",\"required\":true,\"schema\":{\"example\":\"gemini-3.6-flash\",\"type\":\"string\"}},{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"key\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Model description\",\"type\":\"string\"},\"displayName\":{\"description\":\"Human-readable model name\",\"type\":\"string\"},\"inputTokenLimit\":{\"description\":\"Maximum input tokens\",\"type\":\"integer\"},\"name\":{\"description\":\"Model resource name\",\"type\":\"string\"},\"outputTokenLimit\":{\"description\":\"Maximum output tokens\",\"type\":\"integer\"},\"supportedGenerationMethods\":{\"description\":\"Supported generation methods\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"Model version\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Model details\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"HTTP status code\",\"type\":\"integer\"},\"details\":{\"description\":\"Additional error details\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"Error status\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Model not found\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Can also be passed as 'key' query parameter.\",\"in\":\"header\",\"name\":\"x-goog-api-key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/models/{model}",
@@ -539,13 +639,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -635,6 +945,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -791,6 +1197,48 @@
         "website": "https://ai.google.dev/docs"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1345,6 +1793,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1386,7 +1835,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

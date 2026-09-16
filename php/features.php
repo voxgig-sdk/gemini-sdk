@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Gemini SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class GeminiFeatures
@@ -14,8 +17,14 @@ class GeminiFeatures
         switch ($name) {
             case "base":
                 return new GeminiBaseFeature();
+            case "ratelimit":
+                return new GeminiRatelimitFeature();
+            case "retry":
+                return new GeminiRetryFeature();
             case "test":
                 return new GeminiTestFeature();
+            case "timeout":
+                return new GeminiTimeoutFeature();
             default:
                 return new GeminiBaseFeature();
         }
@@ -31,7 +40,10 @@ class GeminiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

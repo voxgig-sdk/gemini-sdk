@@ -1,12 +1,18 @@
 # Gemini SDK feature factory
 
 from gemini_sdk.feature.base_feature import GeminiBaseFeature
+from gemini_sdk.feature.ratelimit_feature import GeminiRatelimitFeature
+from gemini_sdk.feature.retry_feature import GeminiRetryFeature
 from gemini_sdk.feature.test_feature import GeminiTestFeature
+from gemini_sdk.feature.timeout_feature import GeminiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: GeminiBaseFeature(),
+    "ratelimit": lambda: GeminiRatelimitFeature(),
+    "retry": lambda: GeminiRetryFeature(),
     "test": lambda: GeminiTestFeature(),
+    "timeout": lambda: GeminiTimeoutFeature(),
 }
 
 

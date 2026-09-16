@@ -29,5 +29,234 @@
         "model": "s7a"
       }
     }
+  },
+  "requests": {
+    "POST /interactions": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createInteraction",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "textGeneration": {
+                  "summary": "Simple text generation",
+                  "value": {
+                    "input": "Explain how AI works in a few words",
+                    "model": "gemini-3.6-flash"
+                  }
+                }
+              },
+              "schema": {
+                "properties": {
+                  "config": {
+                    "description": "Optional configuration parameters for the interaction",
+                    "type": "object"
+                  },
+                  "input": {
+                    "description": "The input prompt or query",
+                    "example": "Explain how AI works in a few words",
+                    "type": "string"
+                  },
+                  "model": {
+                    "description": "The model to use for the interaction",
+                    "example": "gemini-3.6-flash",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "model",
+                  "input"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "metadata": {
+                      "description": "Additional metadata about the interaction",
+                      "type": "object"
+                    },
+                    "output_text": {
+                      "description": "The generated text output from the model",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful interaction creation"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "HTTP status code",
+                          "type": "integer"
+                        },
+                        "details": {
+                          "description": "Additional error details",
+                          "items": {
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "message": {
+                          "description": "Error message",
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "Error status",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - Invalid input parameters"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "HTTP status code",
+                          "type": "integer"
+                        },
+                        "details": {
+                          "description": "Additional error details",
+                          "items": {
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "message": {
+                          "description": "Error message",
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "Error status",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "HTTP status code",
+                          "type": "integer"
+                        },
+                        "details": {
+                          "description": "Additional error details",
+                          "items": {
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "message": {
+                          "description": "Error message",
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "Error status",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "HTTP status code",
+                          "type": "integer"
+                        },
+                        "details": {
+                          "description": "Additional error details",
+                          "items": {
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "message": {
+                          "description": "Error message",
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "Error status",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Can also be passed as 'key' query parameter.",
+            "in": "header",
+            "name": "x-goog-api-key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
+      }
+    }
   }
 }
